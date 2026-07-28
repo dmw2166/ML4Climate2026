@@ -50,7 +50,7 @@ input–output pair, it learns a small **filter** (also called a *kernel*) of we
 
 This is the "regularized neural network" idea: weight sharing dramatically reduces the
 number of parameters and forces the network to look for *local* patterns that are
-useful *anywhere* in the image. (On Tuesday we will meet **recurrent neural networks**,
+useful *anywhere* in the image. (In the next class we will meet **recurrent neural networks**,
 which encode a different inductive bias, one for *sequential* data such as time
 series, but the CNN's bias is spatial.)
 

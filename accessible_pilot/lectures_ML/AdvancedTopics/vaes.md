@@ -45,7 +45,7 @@ families:
 - **Manifold learning methods** capture nonlinear structure (t-SNE, UMAP,
   etc.).
 - **Deep learning methods** transform the data *nonlinearly* using a neural
-  network: autoencoders and variational autoencoders, today's subject.
+  network: autoencoders and variational autoencoders, this section's subject.
 
 Recall what PCA does: it finds the directions of greatest variance and
 projects onto them. Here is the digits dataset (1797 images of handwritten
