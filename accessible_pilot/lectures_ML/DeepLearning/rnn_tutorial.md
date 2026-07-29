@@ -58,6 +58,9 @@ The numbers quoted below are from one real run.
 Put these imports and globals at the top of your script.
 
 ```python
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # hide TF's cuFFT/cuDNN/cuBLAS startup logs
+
 from pathlib import Path
 from typing import Tuple, List
 
@@ -276,25 +279,39 @@ observations. For `n = 365` and 5 features, a single training sample has
 shape `(365, 5)`.
 
 However, the time series is currently one long matrix (days by features). We
-need to slide over it and cut out short samples. Keras and TensorFlow have
-utility functions for this. Here is `timeseries_dataset_from_array` on a toy
-series:
+need to slide over it and cut out short samples. Keras ships
+`tf.keras.utils.timeseries_dataset_from_array` for exactly this, but it fails
+on the TensorFlow build in the LEAP image, so we use a short NumPy helper
+instead — it takes the same arguments and returns the same
+`(inputs, targets)` batches. Here it is on a toy series:
 
 ```python
 import tensorflow as tf
 from tensorflow.keras.models import Model, load_model
 
+
+def windows(data, targets, sequence_length, batch_size, shuffle=False, seed=None):
+    """Slide a window of `sequence_length` over `data`, pairing each with a target."""
+    data, targets = np.asarray(data), np.asarray(targets)
+    X = np.lib.stride_tricks.sliding_window_view(data, sequence_length, axis=0)
+    X = np.moveaxis(X, -1, 1)[:len(targets)]  # (n_windows, sequence_length, n_features)
+    ds = tf.data.Dataset.from_tensor_slices((X, targets))
+    if shuffle:
+        ds = ds.shuffle(len(targets), seed=seed)
+    return ds.batch(batch_size)
+
+
 my_series = [0, 1, 2, 3, 4, 5]
-my_dataset = tf.keras.utils.timeseries_dataset_from_array(
+my_dataset = windows(
     my_series,
-    targets=my_series[3:],  # the targets are 3 steps into the future
+    my_series[3:],  # the targets are 3 steps into the future
     sequence_length=3,
     batch_size=2
 )
 print(list(my_dataset))
 ```
 
-**What the numbers show.** The utility produced two batches. The first batch
+**What the numbers show.** The helper produced two batches. The first batch
 pairs the input windows `[0, 1, 2]` and `[1, 2, 3]` with targets `3` and `4`;
 the second holds the final window `[2, 3, 4]` with target `5`. This is exactly
 the windowing described in the [notes](rnn.md), done for us.
@@ -382,7 +399,7 @@ sequence_length = 365  # length of the meteorological record given to the networ
 
 tf.random.set_seed(42)  # ensures reproducibility
 
-train_ds = tf.keras.utils.timeseries_dataset_from_array(
+train_ds = windows(
     scaled_features[trainidx],
     targets=scaled_targets[trainidx][sequence_length - 1:],
     sequence_length=sequence_length,
@@ -391,13 +408,13 @@ train_ds = tf.keras.utils.timeseries_dataset_from_array(
     seed=42
 )
 
-valid_ds = tf.keras.utils.timeseries_dataset_from_array(
+valid_ds = windows(
     scaled_features[validx],
     targets=scaled_targets[validx][sequence_length - 1:],
     sequence_length=sequence_length,
     batch_size=2048
 )
-test_ds = tf.keras.utils.timeseries_dataset_from_array(
+test_ds = windows(
     scaled_features[testidx],
     targets=scaled_targets[testidx][sequence_length - 1:],
     sequence_length=sequence_length,
