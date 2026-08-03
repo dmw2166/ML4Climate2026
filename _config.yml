@@ -33,6 +33,8 @@ execute:
     - "**/cnn_tutorial.ipynb"   # needs tensorflow + reads ClimateBench data from a gs:// bucket; ships saved outputs
     - "**/rnn_tutorial.ipynb"   # needs tensorflow + gcsfs (requester-pays CAMELS bucket); ships saved outputs
     - "**/physicsai.ipynb"      # needs tensorflow + trains 4 networks (~5 min); ships saved outputs
+    - "**/generative_tutorial.ipynb"  # needs tensorflow + a 900 MB Zenodo download, and trains a
+                                      # VAE, a GAN and a diffusion model (~10 min); ships saved outputs
     - "assignments/*.ipynb"
 
 # Define the name of the latex output file for PDF builds

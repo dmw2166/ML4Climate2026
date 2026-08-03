@@ -46,4 +46,5 @@ parts:
     - file: lectures_ML/AdvancedTopics/generativemodels
     - file: lectures_ML/AdvancedTopics/gansdiffusion
     - file: lectures_ML/AdvancedTopics/vaes
+    - file: lectures_ML/AdvancedTopics/generative_tutorial
     - file: lectures_ML/AdvancedTopics/physicsai
