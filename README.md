@@ -11,4 +11,4 @@ ethical implications of ML in climate research — through hands-on work with
 real-world datasets.
 
 Built as a [Jupyter Book](https://jupyterbook.org/) and published to GitHub
-Pages: **https://kdlamb.github.io/ML4Climate2026/**
+Pages: **https://dmw2166.github.io/ML4Climate2026/**

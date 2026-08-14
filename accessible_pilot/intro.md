@@ -3,7 +3,7 @@
 *This is a screen-reader-friendly version of the course site for* **Machine
 Learning for Climate Science and Environmental Sustainability** *(Columbia
 Climate School, CLMT5403).* The [standard course
-site](https://kdlamb.github.io/ML4Climate2026/) is the same material; this
+site](https://dmw2166.github.io/ML4Climate2026/) is the same material; this
 version is restructured so a screen reader can read all of it.
 
 ## How this version is different
@@ -79,4 +79,4 @@ Begin with **[What is machine
 learning?](lectures_ML/Introduction/What-is-ML.md)** in the sidebar, then work
 down the table of contents. The full course policies (grading, assignments,
 final project, AI-use policy) are on the [standard course
-site](https://kdlamb.github.io/ML4Climate2026/) and apply here unchanged.
+site](https://dmw2166.github.io/ML4Climate2026/) and apply here unchanged.
