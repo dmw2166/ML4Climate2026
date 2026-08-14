@@ -155,6 +155,6 @@ lesson from CLMT5045 covers each command.
 - Create a new **private** repository on Github called `ml4climate2026`. (Call it
   exactly like that. Do not vary the spelling, capitalization, or punctuation.)
 - Push your `ml4climate2026` repository to Github.
-- On Github, go to "settings" → "collaborators", and add `kdlamb` and `progga004`.
+- On Github, go to "settings" → "collaborators", and add `dmw2166`.
 - Push new commits to this repository whenever you are ready to hand in your
   assignments (including your `assignment1.py` script and saved `.npy` arrays).
