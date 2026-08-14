@@ -1,34 +1,11 @@
-# Welcome to the Earth Data Science and Machine Learning Course Series
+# Welcome to the Fall 2026 course website for Machine Learning and Artificial Intelligence for Climate Science and Solutions
 
-This is the online home for the <strong>second</strong> of the two summer 2026 courses in Columbia's Climate School:
-- *Computing and Research Methods for Climate Data Science* ([CLMT5405](https://earth-ds-ml.github.io/summer_2026/intro.html#))
-- <strong>*Machine Learning for Climate Science and Environmental Sustainability* (CLMT5403)</strong>
-
-```{admonition} Using a screen reader?
-:class: tip
-A screen-reader-friendly version of this site is available at
-[kdlamb.github.io/ML4Climate2026/accessible](https://kdlamb.github.io/ML4Climate2026/accessible/).
-It covers the same material with figures described in text, formulas as readable
-math, and notebooks rewritten as scripts.
-```
 
 ## Course Description
-The application of Machine Learning (ML) to climate science and environmental sustainability has become 
-increasingly popular in recent years, promising to revolutionize how we analyze and address critical 
-environmental challenges. This course will introduce students to the fundamental concepts and methods of ML, 
-emphasizing their practical applications to climate science and environmental sustainability.
- 
-Students will gain both theoretical knowledge and practical skills through hands-on experience with 
-machine learning methods and coding. The course is designed to provide familiarity with the design, 
-implementation, and evaluation of machine learning models towards addressing specific problems in climate 
-science and sustainability. By working with real-world datasets, students will develop a deeper understanding 
-of both the capabilities and limitations of ML tools in climate research and for evaluating environmental 
-sustainability solutions. This course will cover essential topics such as data preprocessing, 
-model selection, evaluation metrics, and the ethical implications of ML in climate science.
- 
-As ML tools become increasingly important to these application areas, this course will be invaluable for 
-those looking to interact with scientists and engineers, manage scientific projects, and develop policies 
-in the realm of climate science and sustainability. 
+Machine learning (ML) and artificial intelligence (AI) tools are quickly becoming part of the standard toolkit in climate research and problem solving. From improving climate model predictions to tracking emissions and mapping land use change with satellite data, ML methods are helping scientists make sense of enormous, complex datasets and evaluate potential climate solutions. As these tools spread across the field, research scientists and policymakers alike need a working understanding of what ML and AI can and cannot do.
+
+This course is a hands-on introduction to machine learning and AI with applications in climate science. Students will learn the fundamentals of building, training, and evaluating ML models, including data preprocessing, model selection, and performance metrics. Working with real climate and environmental datasets, students will gain practical coding experience in Python and a realistic sense of both the power and the limits of ML in climate research. 
+
 
 ## Course objectives
 By the end of this course, students will:
@@ -40,7 +17,7 @@ By the end of this course, students will:
 
 ## Course structure
 
-We meet **Tuesdays and Thursdays, 9:00–10:45 am** (602 Northwest Corner). Most classes are split in two: the **first half** is a lecture covering new material, and the **second half** is **hands-on coding** where you work through tutorials guided by the instructor. Bring a laptop to every class — you'll spend a large fraction of class time writing and running code, not just listening. We use the [LEAP Pangeo platform](https://leap.columbia.edu/leap-pangeo-3/) to access datasets and to train and evaluate models in Jupyter notebooks.
+We meet **Mondays 4:10 - 6:40** (TBD). Most classes are split in two: the **first half** is a lecture covering new material, and the **second half** is **hands-on coding** where you work through tutorials guided by the instructor. Bring a laptop to every class — you'll spend a large fraction of class time writing and running code, not just listening. We use the [] to access datasets and to train and evaluate models in Jupyter notebooks.
 
 Attendance and active participation are expected and count toward your grade. Unexcused absences count against the attendance score; excused absences (medical issue, family emergency, or significant career-related activity) are at the instructor's discretion.
 
