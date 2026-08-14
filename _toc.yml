@@ -6,17 +6,47 @@ root: intro
 # Uncomment a part once at least one of its files exists (a part with no
 # chapters won't build). Assignment files are added back once ported into
 # 2026 assignments/.
+#
+# ---------------------------------------------------------------------------
+# 3-CREDIT EXPANSION
+# ---------------------------------------------------------------------------
+# The parts below marked "PLANNED" are the proposed expansion from 1.5 to 3
+# credits. They are commented out because their files do not exist yet --
+# uncomment each part as its pages are written.
+#
+# Rationale for the ordering:
+#   - Model Evaluation lands right after Supervised ML, so students meet
+#     validation immediately after building their first predictive models
+#     and before those habits set.
+#   - Emulation and Remote Sensing follow Deep Learning, since both lean on
+#     the CNN material.
+#   - Uncertainty and Interpretability are grouped as the "can I trust this?"
+#     block, after students have models worth interrogating.
+#   - Foundation Models and Ethics close the course, where they double as
+#     context for the final project.
+# ---------------------------------------------------------------------------
 parts:
   - caption: Introduction
     chapters:
     - file: lectures_ML/Introduction/What-is-ML
     - file: lectures_ML/Introduction/ML-for-climate-env
     - file: lectures_ML/Introduction/computing-environment
+
+  # PLANNED -- working with real climate data at scale: xarray, zarr, dask,
+  # cloud-hosted archives. Currently the course jumps from "computing
+  # environment" straight to modeling with no coverage of the data stack.
+  # - caption: Working with Climate Data
+  #   chapters:
+  #   - file: lectures_ML/ClimateData/climatedata
+  #   - file: lectures_ML/ClimateData/xarray_tutorial
+  #   - file: lectures_ML/ClimateData/cloud_data
+
   - caption: Data Preprocessing and Feature Engineering
     chapters:
     - file: lectures_ML/DataPreprocessing/datapreprocessing
     - file: lectures_ML/DataPreprocessing/datapreparation
     - file: assignments/Assignment1
+
   - caption: Introduction to Supervised Machine Learning
     chapters:
     - file: lectures_ML/SupervisedML/supervisedml
@@ -25,6 +55,16 @@ parts:
     - file: lectures_ML/SupervisedML/treesforests
     - file: lectures_ML/SupervisedML/randomforests
     - file: assignments/Assignment2
+
+  # NEW -- written. Covers baselines, spatial/temporal autocorrelation,
+  # blocked and forward-chaining cross-validation, leakage, and the
+  # extrapolation limits of tree ensembles.
+  - caption: Model Evaluation and Validation
+    chapters:
+    - file: lectures_ML/ModelEvaluation/modelevaluation
+    - file: lectures_ML/ModelEvaluation/validation
+    # - file: assignments/Assignment3   # re-validate an earlier assignment honestly
+
   - caption: Unsupervised Machine Learning
     chapters:
     - file: lectures_ML/UnsupervisedML/unsupervisedML
@@ -32,6 +72,7 @@ parts:
     - file: lectures_ML/UnsupervisedML/clustering
     - file: lectures_ML/UnsupervisedML/PCA
     - file: assignments/Assignment3
+
   - caption: Introduction to Deep Learning
     chapters:
     - file: lectures_ML/DeepLearning/ann
@@ -41,10 +82,77 @@ parts:
     - file: lectures_ML/DeepLearning/rnn
     - file: lectures_ML/DeepLearning/rnn_tutorial
     - file: assignments/Assignment4
-  - caption: Advanced Topics
+
+  # PLANNED -- closes a stated course objective ("become familiar with climate
+  # model emulation") that currently has no content anywhere in the book.
+  # - caption: Climate Model Emulation
+  #   chapters:
+  #   - file: lectures_ML/Emulation/emulation
+  #   - file: lectures_ML/Emulation/emulation_tutorial
+  #   - file: lectures_ML/Emulation/parameter_sensitivity
+  #   - file: assignments/Assignment5
+
+  # PLANNED -- closes the second gap: the course description advertises
+  # "tracking emissions and mapping land use change with satellite data"
+  # but there is no remote sensing unit. Builds directly on the CNN material.
+  # - caption: Remote Sensing and Geospatial ML
+  #   chapters:
+  #   - file: lectures_ML/RemoteSensing/remotesensing
+  #   - file: lectures_ML/RemoteSensing/landcover_classification
+  #   - file: lectures_ML/RemoteSensing/plume_detection
+  #   - file: assignments/Assignment6
+
+  # PLANNED -- ensembles, calibration, conformal prediction. Pairs with the
+  # Model Evaluation part; a point prediction with no error bar is not a
+  # scientific result.
+  # - caption: Uncertainty Quantification
+  #   chapters:
+  #   - file: lectures_ML/Uncertainty/uncertainty
+  #   - file: lectures_ML/Uncertainty/ensembles_calibration
+  #   - file: lectures_ML/Uncertainty/conformal_prediction
+
+  # PLANNED -- SHAP, permutation importance, saliency maps. Serves the stated
+  # objective about critically assessing strengths and limitations.
+  # - caption: Interpretability and Explainable AI
+  #   chapters:
+  #   - file: lectures_ML/Interpretability/interpretability
+  #   - file: lectures_ML/Interpretability/feature_attribution
+  #   - file: lectures_ML/Interpretability/saliency_maps
+
+  # Renamed from "Advanced Topics" -- the existing pages are all generative
+  # models, so the caption now says so.
+  - caption: Generative Models
     chapters:
     - file: lectures_ML/AdvancedTopics/generativemodels
     - file: lectures_ML/AdvancedTopics/gansdiffusion
     - file: lectures_ML/AdvancedTopics/vaes
     - file: lectures_ML/AdvancedTopics/generative_tutorial
     - file: lectures_ML/AdvancedTopics/physicsai
+
+  # PLANNED -- the applied payoff units. Downscaling gives the diffusion
+  # material a genuine climate use case; S2S forecasting gives the RNN
+  # material a real target.
+  # - caption: Forecasting, Downscaling, and Extremes
+  #   chapters:
+  #   - file: lectures_ML/Applications/downscaling
+  #   - file: lectures_ML/Applications/s2s_forecasting
+  #   - file: lectures_ML/Applications/extreme_events
+  #   - file: assignments/Assignment7
+
+  # PLANNED -- GraphCast, Pangu, Aurora, ClimaX, AIFS. Where the field
+  # actually is right now; students will ask about these regardless.
+  # - caption: Foundation Models for Weather and Climate
+  #   chapters:
+  #   - file: lectures_ML/FoundationModels/foundationmodels
+  #   - file: lectures_ML/FoundationModels/weather_models
+  #   - file: lectures_ML/FoundationModels/using_pretrained
+
+  # PLANNED -- currently offered as a final paper topic but never taught.
+  # Includes the energy and water footprint of training, which is pointed
+  # material for a climate course.
+  # - caption: Ethics, Policy, and the Cost of Compute
+  #   chapters:
+  #   - file: lectures_ML/Ethics/ethics
+  #   - file: lectures_ML/Ethics/compute_footprint
+  #   - file: lectures_ML/Ethics/policy_implications
+  #   - file: assignments/Assignment8
