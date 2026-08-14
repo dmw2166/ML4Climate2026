@@ -92,15 +92,16 @@ parts:
   #   - file: lectures_ML/Emulation/parameter_sensitivity
   #   - file: assignments/Assignment5
 
-  # PLANNED -- closes the second gap: the course description advertises
-  # "tracking emissions and mapping land use change with satellite data"
-  # but there is no remote sensing unit. Builds directly on the CNN material.
-  # - caption: Remote Sensing and Geospatial ML
-  #   chapters:
-  #   - file: lectures_ML/RemoteSensing/remotesensing
-  #   - file: lectures_ML/RemoteSensing/landcover_classification
-  #   - file: lectures_ML/RemoteSensing/plume_detection
-  #   - file: assignments/Assignment6
+  # NEW -- written. Closes the second gap: the course description advertises
+  # "tracking emissions and mapping land use change with satellite data".
+  # Both notebooks call back to the Model Evaluation unit, since remote
+  # sensing is the clearest case of spatial leakage.
+  - caption: Remote Sensing and Geospatial ML
+    chapters:
+    - file: lectures_ML/RemoteSensing/remotesensing
+    - file: lectures_ML/RemoteSensing/landcover_classification
+    - file: lectures_ML/RemoteSensing/plume_detection
+    # - file: assignments/Assignment6
 
   # PLANNED -- ensembles, calibration, conformal prediction. Pairs with the
   # Model Evaluation part; a point prediction with no error bar is not a
