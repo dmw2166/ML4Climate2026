@@ -3,16 +3,15 @@
 
 format: jb-book
 root: intro
-# Uncomment a part once at least one of its files exists (a part with no
-# chapters won't build). Assignment files are added back once ported into
-# 2026 assignments/.
 #
 # ---------------------------------------------------------------------------
 # 3-CREDIT EXPANSION
 # ---------------------------------------------------------------------------
-# The parts below marked "PLANNED" are the proposed expansion from 1.5 to 3
-# credits. They are commented out because their files do not exist yet --
-# uncomment each part as its pages are written.
+# Parts marked "PLANNED" are the proposed expansion from 1.5 to 3 credits.
+# They are commented out because their files do not exist yet -- uncomment
+# each part as its pages are written. A part with no existing chapters will
+# fail the build, so uncomment a part only once at least one of its files
+# exists.
 #
 # Rationale for the ordering:
 #   - Model Evaluation lands right after Supervised ML, so students meet
@@ -24,6 +23,35 @@ root: intro
 #     block, after students have models worth interrogating.
 #   - Foundation Models and Ethics close the course, where they double as
 #     context for the final project.
+#
+# ---------------------------------------------------------------------------
+# ASSIGNMENT SCHEDULE (ten assignments, one per teaching week)
+# ---------------------------------------------------------------------------
+# Assignment numbers follow course order: each is assigned in the week its
+# material is taught. Assignments 3 and 6-10 are not written yet and are
+# commented out in place, so the intended slot is visible.
+#
+#   A1  Data preprocessing -- tropical cyclone records          [written]
+#   A2  Supervised ML -- random forests on air quality          [written]
+#   A3  Model evaluation -- re-validate A2 honestly             [to write]
+#   A4  Unsupervised ML -- climate zones (was Assignment3)      [written]
+#   A5  Deep learning -- flood risk NN (was Assignment4)        [written]
+#   A6  Climate model emulation                                 [to write]
+#   A7  Remote sensing -- land cover classification             [to write]
+#   A8  Uncertainty + interpretability                          [to write]
+#   A9  Downscaling / forecasting                               [to write]
+#   A10 Foundation models -- evaluate a pretrained model        [to write]
+#
+# Notes on the mapping:
+#   - Introduction and Working with Climate Data carry no assignment of their
+#     own; the git/repo setup students need is Part 6 of A1.
+#   - A8 spans two parts (Uncertainty and Interpretability) rather than
+#     splitting into two thin assignments. It is listed under Uncertainty.
+#   - Generative Models and Ethics carry no coding assignment. Ethics feeds
+#     the final paper instead, which is where that material is assessed.
+#   - A3 is deliberately a re-analysis of A2 rather than a new dataset:
+#     students re-validate a model they already built, which is the cheapest
+#     way to make the lesson land.
 # ---------------------------------------------------------------------------
 parts:
   - caption: Introduction
@@ -63,7 +91,9 @@ parts:
     chapters:
     - file: lectures_ML/ModelEvaluation/modelevaluation
     - file: lectures_ML/ModelEvaluation/validation
-    # - file: assignments/Assignment3   # re-validate an earlier assignment honestly
+    # A3 -- re-validate the Assignment 2 random forest with blocked CV and
+    # baselines, and report how much of the original score survives.
+    # - file: assignments/Assignment3
 
   - caption: Unsupervised Machine Learning
     chapters:
@@ -71,7 +101,7 @@ parts:
     - file: lectures_ML/UnsupervisedML/dimensionalityreduction
     - file: lectures_ML/UnsupervisedML/clustering
     - file: lectures_ML/UnsupervisedML/PCA
-    - file: assignments/Assignment3
+    - file: assignments/Assignment4
 
   - caption: Introduction to Deep Learning
     chapters:
@@ -81,7 +111,7 @@ parts:
     - file: lectures_ML/DeepLearning/cnn_tutorial
     - file: lectures_ML/DeepLearning/rnn
     - file: lectures_ML/DeepLearning/rnn_tutorial
-    - file: assignments/Assignment4
+    - file: assignments/Assignment5
 
   # PLANNED -- closes a stated course objective ("become familiar with climate
   # model emulation") that currently has no content anywhere in the book.
@@ -90,7 +120,7 @@ parts:
   #   - file: lectures_ML/Emulation/emulation
   #   - file: lectures_ML/Emulation/emulation_tutorial
   #   - file: lectures_ML/Emulation/parameter_sensitivity
-  #   - file: assignments/Assignment5
+  #   - file: assignments/Assignment6
 
   # NEW -- written. Closes the second gap: the course description advertises
   # "tracking emissions and mapping land use change with satellite data".
@@ -101,7 +131,9 @@ parts:
     - file: lectures_ML/RemoteSensing/remotesensing
     - file: lectures_ML/RemoteSensing/landcover_classification
     - file: lectures_ML/RemoteSensing/plume_detection
-    # - file: assignments/Assignment6
+    # A7 -- land cover classification on a real Sentinel-2 scene, validated
+    # with spatial blocks rather than a random pixel split.
+    # - file: assignments/Assignment7
 
   # PLANNED -- ensembles, calibration, conformal prediction. Pairs with the
   # Model Evaluation part; a point prediction with no error bar is not a
@@ -111,9 +143,13 @@ parts:
   #   - file: lectures_ML/Uncertainty/uncertainty
   #   - file: lectures_ML/Uncertainty/ensembles_calibration
   #   - file: lectures_ML/Uncertainty/conformal_prediction
+  #   # A8 -- put calibrated error bars on an earlier model, then explain what
+  #   # drives its predictions. Spans this part and Interpretability.
+  #   - file: assignments/Assignment8
 
   # PLANNED -- SHAP, permutation importance, saliency maps. Serves the stated
   # objective about critically assessing strengths and limitations.
+  # (Assessed by A8, above -- no separate assignment.)
   # - caption: Interpretability and Explainable AI
   #   chapters:
   #   - file: lectures_ML/Interpretability/interpretability
@@ -138,7 +174,9 @@ parts:
   #   - file: lectures_ML/Applications/downscaling
   #   - file: lectures_ML/Applications/s2s_forecasting
   #   - file: lectures_ML/Applications/extreme_events
-  #   - file: assignments/Assignment7
+  #   # A9 -- downscale a coarse field and beat the appropriate baseline,
+  #   # validated on a held-out future period.
+  #   - file: assignments/Assignment9
 
   # PLANNED -- GraphCast, Pangu, Aurora, ClimaX, AIFS. Where the field
   # actually is right now; students will ask about these regardless.
@@ -147,13 +185,16 @@ parts:
   #   - file: lectures_ML/FoundationModels/foundationmodels
   #   - file: lectures_ML/FoundationModels/weather_models
   #   - file: lectures_ML/FoundationModels/using_pretrained
+  #   # A10 -- run a pretrained weather model, score it against persistence
+  #   # and climatology, and characterize where it fails.
+  #   - file: assignments/Assignment10
 
   # PLANNED -- currently offered as a final paper topic but never taught.
   # Includes the energy and water footprint of training, which is pointed
-  # material for a climate course.
+  # material for a climate course. Assessed by the final paper, not by a
+  # coding assignment.
   # - caption: Ethics, Policy, and the Cost of Compute
   #   chapters:
   #   - file: lectures_ML/Ethics/ethics
   #   - file: lectures_ML/Ethics/compute_footprint
   #   - file: lectures_ML/Ethics/policy_implications
-  #   - file: assignments/Assignment8

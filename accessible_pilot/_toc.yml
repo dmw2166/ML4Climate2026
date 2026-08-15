@@ -28,7 +28,7 @@ parts:
       - file: lectures_ML/UnsupervisedML/dimensionalityreduction
       - file: lectures_ML/UnsupervisedML/clustering
       - file: lectures_ML/UnsupervisedML/PCA
-      - file: assignments/Assignment3
+      - file: assignments/Assignment4
   - caption: Introduction to Deep Learning
     chapters:
       - file: lectures_ML/DeepLearning/ann
@@ -37,8 +37,8 @@ parts:
       - file: lectures_ML/DeepLearning/cnn_tutorial
       - file: lectures_ML/DeepLearning/rnn
       - file: lectures_ML/DeepLearning/rnn_tutorial
-      - file: assignments/Assignment4
-  - caption: Advanced Topics
+      - file: assignments/Assignment5
+  - caption: Generative Models
     chapters:
       - file: lectures_ML/AdvancedTopics/generativemodels
       - file: lectures_ML/AdvancedTopics/gansdiffusion

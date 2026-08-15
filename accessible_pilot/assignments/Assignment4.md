@@ -1,143 +1,178 @@
-# Assignment 4: Flood Risk Prediction with Neural Network Regression
+# Assignment 4: Using Unsupervised Machine Learning to Discover Climate Zones
 
 :::{admonition} How to do this assignment (accessible version)
 :class: important
-On the standard site this is a Jupyter notebook with empty code cells to fill
-in. Here, do it as a **Python script**; see [Setting up an accessible
+On the standard site this is a Jupyter notebook with empty code cells to fill in.
+Here, do it as a **Python script** — see [Setting up an accessible
 workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/computing_env/accessible_setup.html).
-Create a file `assignment4.py`, write your answer to each numbered question in
-its own labelled section (a `# Q1`, `# Q2`, ... comment helps you navigate),
-and run it with `python assignment4.py`. Turn in the `.py` script as described
-in Assignment 1, Part 6.
+Create a file `assignment3.py`, write your answer to each numbered question in its
+own labelled section (a `# Q1`, `# Q2`, ... comment helps you navigate), and run it
+with `python assignment3.py`. Turn in the `.py` script as described in Assignment 1,
+Part 6.
 
-Two of the questions ask for plots (a histogram grid and a scatter plot).
-Instead of relying on the pictures, answer them with **text summaries you
-print**: `df.describe()` for the histograms, and correlation/error numbers for
-the scatter plot; the question text below says exactly what to print. You can
-still render any plot through
-[MAIDR](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/sci_python/trying_maidr.html)
-if you find it useful, but the printed numbers are what you discuss in your
-answer.
-
-This assignment trains a small fully connected neural network with
-**TensorFlow**. Unlike the CNN and RNN tutorials, it runs fine on an ordinary
-laptop CPU: the dataset is a single CSV file and the model is small. Install
-what you need with `pip install kagglehub tensorflow scikit-learn pandas`.
+Most of what this assignment asks you to "plot" is a **map** (a value at each
+latitude/longitude point) or a **cluster map** (a colour label at each point).
+Those are spatial pictures that a scatter/`imshow` renders visually. Instead of
+relying on the picture, answer each question with **text summaries you print**:
+array shapes, min/max/mean values, and — for the clustering parts — how many
+points fall in each cluster (`np.bincount(labels)`) and roughly *where* each
+cluster sits (mean latitude/longitude of its points). You can still render any
+plot through [MAIDR](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/sci_python/trying_maidr.html)
+if you find it useful, but the printed numbers are what you discuss in your answer.
 :::
 
-For this assignment you will develop a machine learning model to predict the
-probability of a flood given both environmental and social factors. The data
-set comes from the Kaggle [Flood Prediction
-Dataset](https://www.kaggle.com/datasets/naiyakhalid/flood-prediction-dataset).
+In this homework assignment, you will explore some common clustering methods, including
+K-Means clustering and Gaussian Mixture Models.
 
-Download the data with `kagglehub`:
+You'll apply these clustering algorithms to the problem of classifying climate
+zones over the continental United States. The Köppen-Geiger Climate Zones are a
+climate classification system based on precipitation and temperature
+([NOAA description](https://www.noaa.gov/jetstream/global/climate-zones/jetstream-max-addition-k-ppen-geiger-climate-subdivisions)).
+You'll use unsupervised machine learning to discover similar climate zones using
+the climatological averages for temperature and precipitation.
 
 ```python
-import os
-import kagglehub
-
-# Download latest version
-path = kagglehub.dataset_download("naiyakhalid/flood-prediction-dataset")
-
-print("Path to dataset files:", path)
-print(os.listdir(path))
+import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.cluster import KMeans
+from sklearn.mixture import GaussianMixture
 ```
 
-The folder contains a single file, `flood.csv`.
+## Download the data sets
 
-## Part 1: Load and Preprocess the Flood Data Set
+You'll use climatological data over the continental US, specifically average
+monthly precipitation and temperature records for the years 1901 to 2000 from
+NOAA ([source](https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals)).
+Download the two NetCDF files by running these `wget` commands **in a terminal**
+(not in the script) from the folder where your script lives:
 
-**1)** Load in the flood data set using `pandas`. *(Print `df.shape`,
-`df.columns`, and `df.head()`. Read the column list: there are 20 predictor
-columns describing environmental and social factors, for example monsoon
-intensity, deforestation, urbanization, dams, and drainage, plus the
-`FloodProbability` column you will predict.)*
+```
+wget "https://www.ncei.noaa.gov/data/oceans/archive/arc0196/0248762/1.1/data/0-data/tavg-1901_2000-monthly-normals-v1.0.nc"
+wget "https://www.ncei.noaa.gov/data/oceans/archive/arc0196/0248762/1.1/data/0-data/prcp-1901_2000-monthly-normals-v1.0.nc"
+```
 
-**2)** Make a histogram plot of the different numerical variables in the
-dataset. *(The accessible equivalent: print `df.describe()` and read the
-count, mean, standard deviation, min, and max of each column. In your answer,
-note the ranges: the predictors are small non-negative integer scores on
-similar scales, and `FloodProbability` is a fraction between roughly 0.3 and
-0.7.)*
+## Part 1: Load and prepare the climatological data
 
-**3)** Create the feature matrix and the targets vector. The target will be
-the flood probability, and the predictors will be all of the other variables
-in the data frame. Put the flood probability into a `numpy` array called `y`
-and the other variables into a `numpy` array called `X`. *(Print `X.shape` and
-`y.shape`: the number of rows should match the DataFrame, with 20 feature
-columns in `X`.)*
+**1)** Use `xarray` to open the NetCDF files for the climatological temperature
+and precipitation datasets for the continental US. *(Hint: `xr.open_dataset(...)`.
+Then `print(tavg)` to read the list of variables, dimensions, and coordinates as
+text — that text is the accessible equivalent of "looking at" the file.)*
 
-## Part 2: Preprocessing
+**2)** Make a plot of the monthly average precipitation in January over the
+continental US. *(This is a map. Instead of reading the picture, also print a text
+summary of the January precipitation field: its shape, and its min, max, and mean
+over all land points — e.g. `np.nanmin`, `np.nanmax`, `np.nanmean`. Note the units
+from the variable's metadata in step 1.)*
 
-**4)** Use the `StandardScaler` method to scale the numerical variables in the
-`X` and `y` arrays. *(Keep the fitted scalers; you will need the target scaler
-again in question 14 to unscale predictions. `StandardScaler` expects 2-D
-input, so reshape `y` to a single column if needed. Print the mean and
-standard deviation of one scaled column to confirm they are about 0 and 1.)*
+**3)** Make a plot of the monthly average temperature in August over the
+continental US. *(Same as above — print shape, min, max, and mean of the August
+temperature field alongside any plot.)*
 
-## Part 3: Training, validation, and test splits
+To identify climatological zones across the continental US, you will use the 12
+monthly average temperature values and the 12 monthly average precipitation values
+as input features for clustering algorithms. Each latitude and longitude point will
+be treated as a single sample with 24 features (12 for temperature and 12 for
+precipitation).
 
-**5)** Split the data into training, validation, and test data sets, with 80%
-of the data used for training, and 10% each for validation and testing.
-*(Hint: call scikit-learn's `train_test_split` twice: first to set aside 20%,
-then to split that 20% in half. Print the shape of all six arrays and check
-the row counts are in the ratio 80/10/10.)*
+**4)** Extract the values for `"mlytavg_norm"` from the temperature and
+precipitation NetCDF files and store them in NumPy arrays named `avgtemp` and
+`avgprec`, respectively. *(Print `avgtemp.shape` and `avgprec.shape` — you should
+see a month dimension of length 12 and two spatial dimensions.)*
 
-## Part 4: Train a Neural Network
+**5)** Put the latitude and longitude values into numpy arrays, and use the
+`np.meshgrid` function to create 2D arrays giving the latitude and longitude value
+at each point on the map:
 
-**6)** Using `tensorflow`, create a fully connected neural network that takes
-as input a feature matrix of size 20, and has 3 dense layers with 100 neurons
-and `ReLU` activation and a final dense layer (with no activation) to get to a
-single output value. *(This is the plain ANN from the
-[deep learning notes](../lectures_ML/DeepLearning/ann.md): no activation on
-the final layer because this is regression.)*
+```python
+lat_grid, lon_grid = np.meshgrid(lats, lons, indexing="ij")
+```
 
-**7)** Print off a summary of the model. How many total trainable parameters
-does it have? *(`model.summary()` prints a table with one row per layer and a
-total at the end; state the total in your answer. Screen-reader tip: the table
-is drawn with box characters, so it can be easier to read the per-layer
-counts with `for w in model.trainable_weights: print(w.shape)` and sum them.)*
+You'll use these arrays later to create labels for the latitude and longitude points
+associated with each sample. *(Print `lat_grid.shape` to confirm it matches one
+month of the temperature map.)*
 
-**8)** Compile the model with MSE loss and use the `Adam` optimizer. As a
-metric, include the Root Mean Squared Error. *(Hint:
-`metrics=[tf.keras.metrics.RootMeanSquaredError()]`. As in the RNN tutorial,
-the loss is what the optimizer minimizes; metrics are just monitored.)*
+**6)** Use the `np.isnan` function to create a mask that is `True` where there is
+data and `False` where there is no data (ocean / outside the US) in the 2D
+temperature and precipitation maps. This mask should have the same dimensions as
+latitude by longitude. *(Hint: `np.isnan` returns `True` where a value is `NaN`, so
+`~np.isnan(one_month_map)` is `True` where data exists. Print
+`mask.sum()` — the number of valid land points — this is how many samples you'll
+cluster.)*
 
-## Train and Evaluate the Model
+**7)** Use the mask to index the numpy arrays `avgtemp`, `avgprec`, `lat_grid`, and
+`lon_grid` to create arrays called `avgtemp_masked`, `avgprec_masked`, `lat_masked`,
+and `lon_masked`. These arrays should no longer contain any NaN's. *(Print
+`avgtemp_masked.shape`. Check `np.isnan(avgtemp_masked).sum()` prints `0`.)*
 
-**9)** Train the model for 30 epochs on the training data set you created
-earlier, using the validation data set to validate the model. *(Pass
-`validation_data=(X_val, y_val)` to `model.fit` and keep the returned
-`history` object.)*
+**8)** `scikit-learn` functions assume that the sample number ($n_{sample}$) is the
+first dimension of an array, and the features associated with a sample are the
+second dimension. Transpose `avgprec_masked` and `avgtemp_masked` to get the correct
+ordering of dimensions. Check that the shape of the arrays is now
+$n_{sample} \times 12$. *(Print the shapes to confirm.)*
 
-**10)** Make a plot of the training and validation loss vs. epoch number.
-*(The numbers behind the plot are in `history.history["loss"]` and
-`history.history["val_loss"]`. Print the first epoch's and last epoch's value
-of each, and in your answer describe the curve in words: how fast the loss
-falls, whether the validation loss tracks the training loss, and whether it
-starts rising at the end, which would signal overfitting.)*
+## Part 2: Pre-process the data
 
-**11)** Save the trained model. *(For example
-`model.save("flood_model.keras")`.)*
+**9)** Scale the precipitation and temperature arrays between -1 and 1. You do this
+so that all 12 months are scaled relative to the same minimum and maximum values
+for precipitation or temperature, respectively. You can use the `MinMaxScaler` from
+scikit-learn with `feature_range=(-1, 1)` (you will have to reshape the arrays to a
+single column to do this, then reshape back), or write your own scaling function.
+*(Print the min and max of each scaled array — they should be -1 and 1.)*
 
-**12)** Evaluate the model on the test data set (i.e. print off the MSE loss
-and the Root Mean Squared Error). *(`model.evaluate(X_test, y_test)` returns
-both numbers; remember these are in scaled units.)*
+**10)** Create a feature array `X` that is $n_{samples} \times n_{features}$, where
+$n_{features} = 24$ (i.e. it combines the two arrays that contain the scaled
+temperature and precipitation monthly averages associated with each sample).
+*(Hint: `np.concatenate([...], axis=1)`. Print `X.shape` — it should be
+$n_{samples} \times 24$.)*
 
-**13)** Get the model predictions for the test data set. *(Print the shape of
-the prediction array: one value per test sample.)*
+## Part 3: Use K-Means Clustering to Label Climate Zones
 
-**14)** Unscale both `y_test` and the model predictions for the flood
-probabilities by using the inverse transformation for the standard scaler.
-*(Hint: `target_scaler.inverse_transform(...)`. Print the min and max of the
-unscaled predictions and check they land in the plausible flood-probability
-range you saw in question 2.)*
+**11)** Use the `KMeans` method from `sklearn.cluster` to fit 8 clusters to the `X`
+feature matrix. *(Set `random_state=0` so your result is reproducible. The cluster
+label for each sample is in `kmeans.labels_`.)*
 
-**15)** Make a scatter plot of the predicted flood probabilities compared with
-the true flood probabilities for the test data set. *(The accessible
-equivalent of judging the scatter by eye: print the correlation coefficient
-between predicted and true values, `np.corrcoef(y_true, y_pred)[0, 1]`, the
-RMSE in original probability units, and a handful of (true, predicted) pairs,
-for example the first ten. In your answer, describe how tightly the
-predictions track the truth: a correlation near 1 and points close to the
-one-to-one line mean the network has learned the mapping well.)*
+**12)** Make a scatter plot of `lat_masked` vs. `lon_masked` and colour each point
+by its K-Means label, using point size 0.1 and a **discrete** colormap (e.g.
+`cmap=plt.get_cmap("tab10", 8)`).
+
+Because this is a spatial map, describe it in **text** instead of relying on the
+picture. Print, for each of the 8 clusters: how many points it contains, and the
+mean latitude and longitude of those points (roughly *where* on the map that
+climate zone sits):
+
+```python
+for k in range(8):
+    pts = kmeans.labels_ == k
+    print(f"cluster {k}: {pts.sum():5d} points, "
+          f"mean lat {lat_masked[pts].mean():.1f}, "
+          f"mean lon {lon_masked[pts].mean():.1f}")
+```
+
+You can compare the climate zones discovered by the K-Means clustering approach
+with the map [here](https://www.cec.org/mapmonday/climate-zones-in-north-america/).
+In your answer, describe which cluster corresponds to which broad region (e.g. the
+arid Southwest, the humid Southeast, the cold northern interior) using the mean
+latitude/longitude you printed.
+
+**13)** Repeat parts 11 and 12 but choose a **different** number of clusters. Print
+the same per-cluster summary. In your answer, discuss how the discovered zones
+change — do more clusters split one region into finer sub-zones, or split it in a
+way that doesn't match real climate boundaries?
+
+## Part 4: Use a Gaussian Mixture Model to Label Climate Zones
+
+**14)** Use the `GaussianMixture` method from `sklearn.mixture` to fit 8 components
+to the `X` feature matrix. *(Set `random_state=0`. Get the label for each sample
+with `gmm.predict(X)`.)*
+
+**15)** Make a scatter plot of `lat_masked` vs. `lon_masked` and colour by the
+components learned by the Gaussian Mixture Model, using point size 0.1 and a
+discrete colormap.
+
+As in question 12, describe the result in **text**: print the number of points and
+the mean latitude/longitude for each of the 8 GMM components. In your answer,
+compare the GMM zones to the K-Means zones from Part 3 — where do they agree, and
+where does allowing non-spherical clusters (GMM) change which points group
+together?
