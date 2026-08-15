@@ -1,5 +1,5 @@
 # Welcome to Machine Learning and Artificial Intelligence for Climate Science and Solutions
-Fall 2026 Course Website
+Fall 2026 Course Website. This is a 3-credit class in the Columbia Climate School taught by [Prof. Dan Westervelt](https://aerosol.ldeo.columbia.edu/). This course website was developed from an [original version](https://kdlamb.github.io/ML4Climate2026/intro.html) created by Dr. Kara Lamb. 
 
 
 ## Course Description
@@ -30,7 +30,7 @@ We meet **Mondays 4:10 - 6:40** (TBD). Most classes are split in two: the **firs
 Your grade in this course is based on:
 
 - **50%** — coding assignments
-- **40%** — final paper and presentation
+- **40%** — final project and presentation
 - **10%** — attendance and participation
 
 
@@ -39,19 +39,19 @@ Your grade in this course is based on:
 
 ## Final project
 
-A final project serves as the capstone and counts for **40%** of your grade, in lieu of a final exam. It is []
+A final project counts for **50%** of your grade, in lieu of a final exam. It is []
 
 The timeline:
 
 - **Topic** — submit to the instructor for approval by 
-- **Presentation** — in-class final presentations on 
-- **Paper** — due 
+- **Presentation** — in-class final presentations on December 14
+- **Paper** — due December 21
 
 ## Using AI in This Course
 
-Large Language Models (LLMs) such as ChatGPT, Google Gemini, Claude, etc., are rapidly changing norms in higher education. Some of what these tools provide can be useful and helpful, but overreliance on LLMs is a risk. Asking an LLM to do an assignment for you will do you a major disservice in your future career, as you will not be learning and acquiring the skills needed to succeed in a career in climate. Additionally, the LLMs are prone to mistakes. Use of LLMs is allowed in this class; however, you must cite your use of it in your assignments. You may use whichever one you like, but note that Google Gemini is available for free to Columbia students: https://www.cuit.columbia.edu/content/google-gemini. An example of acceptable use citation might look like “Used Claude Fable 5 to look up syntax for creating a filled contour plot”. Unacceptable use would be copying and pasting code that you can’t explain. You are responsible for understanding and being able to explain your work.  The instructor and/or TAs reserve the right to ask you questions about your assignment if they suspect over-reliance on LLMs. If you are not understanding the code or material, that is a sign to revisit the material, ask questions, go to office hours, etc., and not to rely further on LLMs. 
+Large Language Models (LLMs) such as ChatGPT, Google Gemini, Claude, etc., are rapidly changing norms in higher education. Some of what these tools provide can be useful and helpful, but overreliance on LLMs is a risk. Asking an LLM to do an assignment for you will do you a major disservice in your future career, as you will not be learning and acquiring the skills needed to succeed in a career in climate. Additionally, the LLMs are prone to mistakes. Use of LLMs is allowed in this class; however, you must cite your use of it in your assignments. You may use whichever one you like, but note that Google Gemini is available for free to Columbia students: [https://www.cuit.columbia.edu/content/google-gemini]. An example of acceptable use citation might look like “Used Claude Fable 5 to look up syntax for creating a filled contour plot”. Unacceptable use would be copying and pasting code that you can’t explain. You are responsible for understanding and being able to explain your work.  The instructor and/or TAs reserve the right to ask you questions about your assignment if they suspect over-reliance on LLMs. If you are not understanding the code or material, that is a sign to revisit the material, ask questions, go to office hours, etc., and not to rely further on LLMs. 
 
-**How to use it — Socratic mode.** Default to asking the AI to *teach* you, not to *do it for you*. At the start of a working session, prime your chat with a tutor prompt. Here is one to start with — feel free to adapt it as you learn what works:
+**How to use it — Socratic mode.** Default to asking the AI to *teach* you, not to *do it for you*. At the start of a working session, prime your chat with a tutor prompt. Here is an example. Feel free to adapt it as you learn what works:
 
 ```
 You are acting as my Socratic Tutor for a graduate-level Machine Learning and Climate Science
