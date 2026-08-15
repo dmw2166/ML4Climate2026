@@ -91,9 +91,7 @@ parts:
     chapters:
     - file: lectures_ML/ModelEvaluation/modelevaluation
     - file: lectures_ML/ModelEvaluation/validation
-    # A3 -- re-validate the Assignment 2 random forest with blocked CV and
-    # baselines, and report how much of the original score survives.
-    # - file: assignments/Assignment3
+    - file: assignments/Assignment3
 
   - caption: Unsupervised Machine Learning
     chapters:
@@ -113,14 +111,15 @@ parts:
     - file: lectures_ML/DeepLearning/rnn_tutorial
     - file: assignments/Assignment5
 
-  # PLANNED -- closes a stated course objective ("become familiar with climate
-  # model emulation") that currently has no content anywhere in the book.
-  # - caption: Climate Model Emulation
-  #   chapters:
-  #   - file: lectures_ML/Emulation/emulation
-  #   - file: lectures_ML/Emulation/emulation_tutorial
-  #   - file: lectures_ML/Emulation/parameter_sensitivity
-  #   - file: assignments/Assignment6
+  # STUB -- closes a stated course objective ("become familiar with climate
+  # model emulation"). Overview page is a placeholder; the tutorials below
+  # are still to be written.
+  - caption: Climate Model Emulation
+    chapters:
+    - file: lectures_ML/Emulation/emulation
+    # - file: lectures_ML/Emulation/emulation_tutorial
+    # - file: lectures_ML/Emulation/parameter_sensitivity
+    - file: assignments/Assignment6
 
   # NEW -- written. Closes the second gap: the course description advertises
   # "tracking emissions and mapping land use change with satellite data".
@@ -131,21 +130,17 @@ parts:
     - file: lectures_ML/RemoteSensing/remotesensing
     - file: lectures_ML/RemoteSensing/landcover_classification
     - file: lectures_ML/RemoteSensing/plume_detection
-    # A7 -- land cover classification on a real Sentinel-2 scene, validated
-    # with spatial blocks rather than a random pixel split.
-    # - file: assignments/Assignment7
+    - file: assignments/Assignment7
 
-  # PLANNED -- ensembles, calibration, conformal prediction. Pairs with the
+  # STUB -- ensembles, calibration, conformal prediction. Pairs with the
   # Model Evaluation part; a point prediction with no error bar is not a
-  # scientific result.
-  # - caption: Uncertainty Quantification
-  #   chapters:
-  #   - file: lectures_ML/Uncertainty/uncertainty
-  #   - file: lectures_ML/Uncertainty/ensembles_calibration
-  #   - file: lectures_ML/Uncertainty/conformal_prediction
-  #   # A8 -- put calibrated error bars on an earlier model, then explain what
-  #   # drives its predictions. Spans this part and Interpretability.
-  #   - file: assignments/Assignment8
+  # scientific result. A8 spans this part and Interpretability.
+  - caption: Uncertainty Quantification
+    chapters:
+    - file: lectures_ML/Uncertainty/uncertainty
+    # - file: lectures_ML/Uncertainty/ensembles_calibration
+    # - file: lectures_ML/Uncertainty/conformal_prediction
+    - file: assignments/Assignment8
 
   # PLANNED -- SHAP, permutation importance, saliency maps. Serves the stated
   # objective about critically assessing strengths and limitations.
@@ -169,25 +164,22 @@ parts:
   # PLANNED -- the applied payoff units. Downscaling gives the diffusion
   # material a genuine climate use case; S2S forecasting gives the RNN
   # material a real target.
-  # - caption: Forecasting, Downscaling, and Extremes
-  #   chapters:
-  #   - file: lectures_ML/Applications/downscaling
-  #   - file: lectures_ML/Applications/s2s_forecasting
-  #   - file: lectures_ML/Applications/extreme_events
-  #   # A9 -- downscale a coarse field and beat the appropriate baseline,
-  #   # validated on a held-out future period.
-  #   - file: assignments/Assignment9
+  - caption: Forecasting, Downscaling, and Extremes
+    chapters:
+    - file: lectures_ML/Applications/forecasting
+    # - file: lectures_ML/Applications/downscaling
+    # - file: lectures_ML/Applications/s2s_forecasting
+    # - file: lectures_ML/Applications/extreme_events
+    - file: assignments/Assignment9
 
-  # PLANNED -- GraphCast, Pangu, Aurora, ClimaX, AIFS. Where the field
+  # STUB -- GraphCast, Pangu, Aurora, ClimaX, AIFS. Where the field
   # actually is right now; students will ask about these regardless.
-  # - caption: Foundation Models for Weather and Climate
-  #   chapters:
-  #   - file: lectures_ML/FoundationModels/foundationmodels
-  #   - file: lectures_ML/FoundationModels/weather_models
-  #   - file: lectures_ML/FoundationModels/using_pretrained
-  #   # A10 -- run a pretrained weather model, score it against persistence
-  #   # and climatology, and characterize where it fails.
-  #   - file: assignments/Assignment10
+  - caption: Foundation Models for Weather and Climate
+    chapters:
+    - file: lectures_ML/FoundationModels/foundationmodels
+    # - file: lectures_ML/FoundationModels/weather_models
+    # - file: lectures_ML/FoundationModels/using_pretrained
+    - file: assignments/Assignment10
 
   # PLANNED -- currently offered as a final paper topic but never taught.
   # Includes the energy and water footprint of training, which is pointed
