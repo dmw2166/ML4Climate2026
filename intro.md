@@ -39,13 +39,83 @@ Your grade in this course is based on:
 
 ## Final project
 
-A final project counts for **50%** of your grade, in lieu of a final exam. It is []
+The final project counts for **40%** of your grade, in lieu of a final exam. You will find a
+real environmental or climate dataset, pose a question you can answer with it, and apply what
+you have learned to answer that question honestly.
 
-The timeline:
+The emphasis is on *honestly*. A modest result you can defend is worth more than an
+impressive-looking one you cannot. Much of what separates useful machine learning from useless
+machine learning in this field is not the model — it is whether the person running it
+understood what their validation was actually measuring.
 
-- **Topic** — submit to the instructor for approval by 
-- **Presentation** — in-class final presentations on December 14
-- **Paper** — due December 21
+### Choosing a dataset
+
+Pick something real. It should be observational, model, or remote sensing data with genuine
+environmental relevance — not a cleaned teaching dataset with a known answer.
+
+**You are encouraged to use data from your own research.** If you have a dataset you already
+care about, this is a good excuse to try these methods on it.
+
+Some starting points: ERA5 reanalysis (Copernicus), CMIP6 output (ESGF or the LEAP catalogs),
+NOAA GHCN station records and OISST, EPA AQS or OpenAQ for air quality, Sentinel-2 and Landsat
+imagery via the Planetary Computer, CAMELS for hydrology, ClimateBench for emulation.
+
+Bring your dataset choice to office hours early if you are unsure whether it will work.
+
+### What your analysis must include
+
+1. **A clear question.** State what you are predicting or discovering, and why it matters.
+   "I applied a random forest to this dataset" is not a question.
+2. **A baseline.** Compare against the appropriate naive predictor — climatology, persistence,
+   the majority class, or simple linear regression. Report it alongside your model.
+3. **A validation scheme that matches the application.** If your data has spatial or temporal
+   structure, a random train/test split will overstate your skill. Justify the scheme you
+   chose. This is the single most heavily weighted technical element.
+4. **Some characterization of uncertainty.** Error bars, an ensemble spread, or a clear
+   statement of what you could not quantify and why.
+5. **Interpretation.** What did the model learn? Does it agree with physical intuition? Where
+   does it fail, and is that failure telling you something?
+6. **Limitations.** What would you need to trust this result — more data, different data, a
+   different method? What are the practical or ethical considerations if someone acted on it?
+
+```{admonition} Negative results are fine
+:class: tip
+A negative result, honestly obtained and clearly explained, receives full credit. If your model
+cannot beat persistence, that is a finding. Report it.
+```
+
+### Deliverables
+
+- **Code** — a GitHub repository with your notebook(s) and a README that lets someone reproduce
+  your work
+- **Paper** — 5 pages, excluding figures and references
+- **Presentation** — 10 minutes plus questions, in class on December 14
+
+### Timeline
+
+| Milestone | Date |
+| --- | --- |
+| Topic proposal (one paragraph: dataset, question, method) | Monday, November 9 |
+| In-class presentations | Monday, December 14 |
+| Paper and code due | Monday, December 21 |
+
+### Grading
+
+| Component | Weight |
+| --- | --- |
+| Question and dataset — well-posed, appropriate, genuinely used | 15% |
+| Methods — sound choices, correctly implemented | 25% |
+| Validation and baselines — honest, justified, correctly applied | 25% |
+| Interpretation and limitations — critical, physically grounded | 20% |
+| Communication — paper and presentation | 15% |
+
+### What will not score well
+
+Running three models and reporting whichever scored highest, with no baseline. A random
+train/test split on spatially or temporally correlated data with no acknowledgment. Reporting
+only the metric that flatters the result. Any accuracy above roughly 0.95 that goes
+unexamined — in this field that is usually leakage, and finding it is worth more than
+reporting it.
 
 ## Using AI in This Course
 
