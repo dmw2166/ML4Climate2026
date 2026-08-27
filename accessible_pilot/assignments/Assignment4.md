@@ -1,178 +1,166 @@
-# Assignment 4: Using Unsupervised Machine Learning to Discover Climate Zones
+# Assignment 4: Predicting Health Impacts from Air Quality Factors
 
 :::{admonition} How to do this assignment (accessible version)
 :class: important
 On the standard site this is a Jupyter notebook with empty code cells to fill in.
 Here, do it as a **Python script** — see [Setting up an accessible
 workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/computing_env/accessible_setup.html).
-Create a file `assignment3.py`, write your answer to each numbered question in its
+Create a file `assignment2.py`, write your answer to each numbered question in its
 own labelled section (a `# Q1`, `# Q2`, ... comment helps you navigate), and run it
-with `python assignment3.py`. Turn in the `.py` script as described in Assignment 1,
-Part 6.
-
-Most of what this assignment asks you to "plot" is a **map** (a value at each
-latitude/longitude point) or a **cluster map** (a colour label at each point).
-Those are spatial pictures that a scatter/`imshow` renders visually. Instead of
-relying on the picture, answer each question with **text summaries you print**:
-array shapes, min/max/mean values, and — for the clustering parts — how many
-points fall in each cluster (`np.bincount(labels)`) and roughly *where* each
-cluster sits (mean latitude/longitude of its points). You can still render any
-plot through [MAIDR](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/sci_python/trying_maidr.html)
-if you find it useful, but the printed numbers are what you discuss in your answer.
+with `python assignment2.py`. For any plot a question asks for, render it through
+**MAIDR** so you can hear/read it, and also print a text summary (`describe()`,
+`value_counts()`, `.shape`) — you can discuss those in your answer. Turn in the
+`.py` script as described in Assignment 1.
 :::
 
-In this homework assignment, you will explore some common clustering methods, including
-K-Means clustering and Gaussian Mixture Models.
-
-You'll apply these clustering algorithms to the problem of classifying climate
-zones over the continental United States. The Köppen-Geiger Climate Zones are a
-climate classification system based on precipitation and temperature
-([NOAA description](https://www.noaa.gov/jetstream/global/climate-zones/jetstream-max-addition-k-ppen-geiger-climate-subdivisions)).
-You'll use unsupervised machine learning to discover similar climate zones using
-the climatological averages for temperature and precipitation.
+In this assignment, we will use a (synthetic) data set looking at how health
+impacts are related to air quality factors. This data set is available at
+[https://www.kaggle.com/datasets/rabieelkharoua/air-quality-and-health-impact-dataset](https://www.kaggle.com/datasets/rabieelkharoua/air-quality-and-health-impact-dataset).
+The data includes public health outcomes and how they are related to air quality
+and meteorological factors.
 
 ```python
-import numpy as np
-import xarray as xr
+import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.cluster import KMeans
-from sklearn.mixture import GaussianMixture
+import os
 ```
 
-## Download the data sets
+## Download the data from Kaggle
 
-You'll use climatological data over the continental US, specifically average
-monthly precipitation and temperature records for the years 1901 to 2000 from
-NOAA ([source](https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals)).
-Download the two NetCDF files by running these `wget` commands **in a terminal**
-(not in the script) from the folder where your script lives:
-
-```
-wget "https://www.ncei.noaa.gov/data/oceans/archive/arc0196/0248762/1.1/data/0-data/tavg-1901_2000-monthly-normals-v1.0.nc"
-wget "https://www.ncei.noaa.gov/data/oceans/archive/arc0196/0248762/1.1/data/0-data/prcp-1901_2000-monthly-normals-v1.0.nc"
-```
-
-## Part 1: Load and prepare the climatological data
-
-**1)** Use `xarray` to open the NetCDF files for the climatological temperature
-and precipitation datasets for the continental US. *(Hint: `xr.open_dataset(...)`.
-Then `print(tavg)` to read the list of variables, dimensions, and coordinates as
-text — that text is the accessible equivalent of "looking at" the file.)*
-
-**2)** Make a plot of the monthly average precipitation in January over the
-continental US. *(This is a map. Instead of reading the picture, also print a text
-summary of the January precipitation field: its shape, and its min, max, and mean
-over all land points — e.g. `np.nanmin`, `np.nanmax`, `np.nanmean`. Note the units
-from the variable's metadata in step 1.)*
-
-**3)** Make a plot of the monthly average temperature in August over the
-continental US. *(Same as above — print shape, min, max, and mean of the August
-temperature field alongside any plot.)*
-
-To identify climatological zones across the continental US, you will use the 12
-monthly average temperature values and the 12 monthly average precipitation values
-as input features for clustering algorithms. Each latitude and longitude point will
-be treated as a single sample with 24 features (12 for temperature and 12 for
-precipitation).
-
-**4)** Extract the values for `"mlytavg_norm"` from the temperature and
-precipitation NetCDF files and store them in NumPy arrays named `avgtemp` and
-`avgprec`, respectively. *(Print `avgtemp.shape` and `avgprec.shape` — you should
-see a month dimension of length 12 and two spatial dimensions.)*
-
-**5)** Put the latitude and longitude values into numpy arrays, and use the
-`np.meshgrid` function to create 2D arrays giving the latitude and longitude value
-at each point on the map:
+To download data from Kaggle, install the `kagglehub` package once in the terminal
+(not in the script): `pip install kagglehub`. Then download the data set:
 
 ```python
-lat_grid, lon_grid = np.meshgrid(lats, lons, indexing="ij")
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("rabieelkharoua/air-quality-and-health-impact-dataset")
+print("Path to dataset files:", path)
+
+os.listdir(path)
 ```
 
-You'll use these arrays later to create labels for the latitude and longitude points
-associated with each sample. *(Print `lat_grid.shape` to confirm it matches one
-month of the temperature map.)*
+## Part 1: Data exploration
 
-**6)** Use the `np.isnan` function to create a mask that is `True` where there is
-data and `False` where there is no data (ocean / outside the US) in the 2D
-temperature and precipitation maps. This mask should have the same dimensions as
-latitude by longitude. *(Hint: `np.isnan` returns `True` where a value is `NaN`, so
-`~np.isnan(one_month_map)` is `True` where data exists. Print
-`mask.sum()` — the number of valid land points — this is how many samples you'll
-cluster.)*
+**1)** Load in the csv file as a dataframe using `pandas`.
 
-**7)** Use the mask to index the numpy arrays `avgtemp`, `avgprec`, `lat_grid`, and
-`lon_grid` to create arrays called `avgtemp_masked`, `avgprec_masked`, `lat_masked`,
-and `lon_masked`. These arrays should no longer contain any NaN's. *(Print
-`avgtemp_masked.shape`. Check `np.isnan(avgtemp_masked).sum()` prints `0`.)*
+**2)** Check whether there are any NaN's in the dataframe. *(Hint: `df.isna().sum()`
+prints a text table of missing values per column.)*
 
-**8)** `scikit-learn` functions assume that the sample number ($n_{sample}$) is the
-first dimension of an array, and the features associated with a sample are the
-second dimension. Transpose `avgprec_masked` and `avgtemp_masked` to get the correct
-ordering of dimensions. Check that the shape of the arrays is now
-$n_{sample} \times 12$. *(Print the shapes to confirm.)*
+**3)** Make a histogram of the different numerical variables in the dataframe.
+*(Render with MAIDR to explore each distribution, and/or print `df.describe()` to
+summarize them in text.)*
 
-## Part 2: Pre-process the data
+**4)** There are two possible targets in the dataframe. One is a categorical
+variable `HealthImpactClass`, and the other is a numerical variable
+`HealthImpactScore`. Create numpy arrays, one named `y_classification` containing
+the `HealthImpactClass`, and one named `y_regression` containing the
+`HealthImpactScore`.
 
-**9)** Scale the precipitation and temperature arrays between -1 and 1. You do this
-so that all 12 months are scaled relative to the same minimum and maximum values
-for precipitation or temperature, respectively. You can use the `MinMaxScaler` from
-scikit-learn with `feature_range=(-1, 1)` (you will have to reshape the arrays to a
-single column to do this, then reshape back), or write your own scaling function.
-*(Print the min and max of each scaled array — they should be -1 and 1.)*
+**5)** Check how balanced the 5 classes are in `HealthImpactClass`. *(Hint:
+`value_counts()` prints the count per class as text.)*
 
-**10)** Create a feature array `X` that is $n_{samples} \times n_{features}$, where
-$n_{features} = 24$ (i.e. it combines the two arrays that contain the scaled
-temperature and precipitation monthly averages associated with each sample).
-*(Hint: `np.concatenate([...], axis=1)`. Print `X.shape` — it should be
-$n_{samples} \times 24$.)*
+**6)** Create a numpy array called `features` that includes the following 9
+variables:
 
-## Part 3: Use K-Means Clustering to Label Climate Zones
+- AQI
+- PM10
+- PM2_5
+- NO2
+- SO2
+- O3
+- Temperature
+- Humidity
+- WindSpeed
 
-**11)** Use the `KMeans` method from `sklearn.cluster` to fit 8 clusters to the `X`
-feature matrix. *(Set `random_state=0` so your result is reproducible. The cluster
-label for each sample is in `kmeans.labels_`.)*
+## Part 2: Preprocessing
 
-**12)** Make a scatter plot of `lat_masked` vs. `lon_masked` and colour each point
-by its K-Means label, using point size 0.1 and a **discrete** colormap (e.g.
-`cmap=plt.get_cmap("tab10", 8)`).
+**7)** Create two python lists, one including the class names, and the other
+including the feature names. The classification of health impact is derived from
+the health impact score, using the following thresholds:
 
-Because this is a spatial map, describe it in **text** instead of relying on the
-picture. Print, for each of the 8 clusters: how many points it contains, and the
-mean latitude and longitude of those points (roughly *where* on the map that
-climate zone sits):
+- 0: 'Very High' (HealthImpactScore >= 80)
+- 1: 'High' (60 <= HealthImpactScore < 80)
+- 2: 'Moderate' (40 <= HealthImpactScore < 60)
+- 3: 'Low' (20 <= HealthImpactScore < 40)
+- 4: 'Very Low' (HealthImpactScore < 20)
+
+**8)** Use the `StandardScaler` method to scale the numerical variables in the
+`features` array, and save this as a numpy array `X`.
+
+## Part 3: Training, validation, and test split
+
+**9)** Split the data into training, validation, and test data sets, with 80% of
+the data used for training and 10% each for validation and testing. Create separate
+regression and classification targets, using `y_classification` and `y_regression`.
+
+## Part 4: Train a Random Forest Classifier
+
+**10)** Train a `RandomForestClassifier` with 120 estimators and a maximum depth of
+10. Set the `class_weight` to `"balanced"`, since the classes are imbalanced. You
+can use the default values for the other hyperparameters.
+
+**11)** Report the confusion matrix showing the performance of the trained
+classifier on the validation data set. On the standard site this is drawn as a
+labelled heatmap; in the accessible workflow, **print the matrix as numbers**
+instead, with the class names, so you can read it row by row:
 
 ```python
-for k in range(8):
-    pts = kmeans.labels_ == k
-    print(f"cluster {k}: {pts.sum():5d} points, "
-          f"mean lat {lat_masked[pts].mean():.1f}, "
-          f"mean lon {lon_masked[pts].mean():.1f}")
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_classification_val, clf.predict(X_val))
+print("Rows = true class, Cols = predicted class, order =", classnames)
+print(cm)
+# A full per-class precision/recall/F1 table:
+from sklearn.metrics import classification_report
+print(classification_report(y_classification_val, clf.predict(X_val), target_names=classnames))
 ```
 
-You can compare the climate zones discovered by the K-Means clustering approach
-with the map [here](https://www.cec.org/mapmonday/climate-zones-in-north-america/).
-In your answer, describe which cluster corresponds to which broad region (e.g. the
-arid Southwest, the humid Southeast, the cold northern interior) using the mean
-latitude/longitude you printed.
+Each row of the matrix is a true class and each column is a predicted class; the
+diagonal entries are correct predictions. To explore it visually with sound, you
+can also render the confusion matrix as a heatmap through MAIDR.
 
-**13)** Repeat parts 11 and 12 but choose a **different** number of clusters. Print
-the same per-cluster summary. In your answer, discuss how the discovered zones
-change — do more clusters split one region into finer sub-zones, or split it in a
-way that doesn't match real climate boundaries?
+Because the classes are imbalanced, the confusion matrix shows that the classifier
+does not perform that well on the classes that are not well-represented in the
+data. One way to improve this is to use over-sampling to augment the data set.
+Using the `imbalanced-learn` library (install once with `pip install
+imbalanced-learn`), we can use the `SMOTE` algorithm
+([https://arxiv.org/pdf/1106.1813](https://arxiv.org/pdf/1106.1813)) to oversample
+the data set:
 
-## Part 4: Use a Gaussian Mixture Model to Label Climate Zones
+```python
+from imblearn.over_sampling import SMOTE
+X_resampled, y_resampled = SMOTE().fit_resample(X_train, y_classification_train)
+```
 
-**14)** Use the `GaussianMixture` method from `sklearn.mixture` to fit 8 components
-to the `X` feature matrix. *(Set `random_state=0`. Get the label for each sample
-with `gmm.predict(X)`.)*
+**12)** Train a new random forest classifier using `X_resampled` and `y_resampled`.
+Use the same hyperparameters as your original random forest.
 
-**15)** Make a scatter plot of `lat_masked` vs. `lon_masked` and colour by the
-components learned by the Gaussian Mixture Model, using point size 0.1 and a
-discrete colormap.
+**13)** Report the confusion matrix (as numbers, per Q11) for the classifier that
+was trained on the oversampled data set, evaluated on the validation data set.
+Compare it with the matrix from Q11 — which classes improved?
 
-As in question 12, describe the result in **text**: print the number of points and
-the mean latitude/longitude for each of the 8 GMM components. In your answer,
-compare the GMM zones to the K-Means zones from Part 3 — where do they agree, and
-where does allowing non-spherical clusters (GMM) change which points group
-together?
+## Part 5: Train a Random Forest Regressor
+
+**14)** Train a `RandomForestRegressor` on the training data set, using the
+regression target. Set the number of estimators to 120 and the maximum tree depth
+to 10. You can use the other default hyperparameters.
+
+**15)** Using your trained `RandomForestRegressor`, predict the target values for
+the validation data set and calculate the coefficient of determination (R²) between
+the true targets and the predicted values. *(Hint: `sklearn.metrics.r2_score`, or
+the regressor's `.score()` method, prints a single number.)*
+
+**16)** Report the feature importance of your trained random forest. On the
+standard site this is a bar plot; in the accessible workflow, print it as a sorted
+text list so you can read the ranking:
+
+```python
+import pandas as pd
+print(pd.Series(reg.feature_importances_, index=featurenames).sort_values(ascending=False))
+```
+
+You can also render the bar plot through MAIDR if you want to explore it by sound.
+
+**17)** What are the 4 most important features in terms of determining the health
+impact score? Print them out. *(The sorted list from Q16 gives them directly — take
+the top 4 names.)*

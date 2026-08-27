@@ -1,37 +1,39 @@
-# Assignment 10: Evaluating a Pretrained Weather Model
+# Assignment 10: Generative Models
 
 ```{admonition} Not yet released
 :class: note
-This assignment has not been posted yet. It will be released when the
-**Foundation Models for Weather and Climate** unit is covered in class. The outline below is provisional and
-describes what the assignment is expected to ask you to do.
+This assignment has not been posted yet. It is due **Monday, December 1** and covers the
+material from **Week 11 — Deep Learning: Generative Models**. The outline below is provisional.
 ```
 
 ## What this assignment will cover
 
-Machine-learned weather models now match or beat traditional numerical forecasts
-on some measures. This assignment is about assessing such a model rather than
-training one.
+Generative models learn a distribution rather than a mapping, which makes them
+useful for problems where the goal is plausible samples rather than a single
+prediction.
 
 You will:
 
-- Run inference with a pretrained weather or climate foundation model
-- Score its forecasts against persistence and climatology, at several lead times
-- Characterize where it performs well and where it degrades
-- Investigate its behavior on at least one extreme or unusual case
-- Write a short assessment of what the model is and is not suitable for, written
-  for a reader deciding whether to rely on it operationally
+- Train an autoencoder and inspect what its latent space has organized
+- Train a variational autoencoder and sample from it
+- Compare the samples against the training distribution — do they reproduce its
+  statistics, or only its mean behavior?
+- Describe how a GAN and a diffusion model differ in how they are trained, and what
+  that implies for stability and sample quality
+- Discuss one climate application where generating plausible samples is more useful
+  than predicting a single expected value
 
 ## Prerequisites
 
-Assignments 3 and 9, and the *Foundation Models for Weather and Climate* unit.
+Assignments 8 and 9, and the Week 11 lecture material.
 
 ## Notes
 
-The deliverable is an evaluation, not a model. A careful account of where a
-system fails is worth more here than a headline skill score.
+Evaluating a generative model is genuinely harder than evaluating a predictive
+one, since there is no single right answer to score against. Part of this assignment
+is confronting that.
 
 ## Submitting
 
 Push your completed notebook to your `ml4climate2026` repository, as described in
-Assignment 1, Part 6.
+Assignment 1.

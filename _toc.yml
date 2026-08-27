@@ -5,188 +5,108 @@ format: jb-book
 root: intro
 #
 # ---------------------------------------------------------------------------
-# 3-CREDIT EXPANSION
+# STRUCTURE
 # ---------------------------------------------------------------------------
-# Parts marked "PLANNED" are the proposed expansion from 1.5 to 3 credits.
-# They are commented out because their files do not exist yet -- uncomment
-# each part as its pages are written. A part with no existing chapters will
-# fail the build, so uncomment a part only once at least one of its files
-# exists.
+# Parts mirror the course schedule in the syllabus (CLMT5120, Fall 2026), one
+# part per teaching week. Week 8 is fall break and Week 14 is final project
+# presentations, so neither has a part here.
 #
-# Rationale for the ordering:
-#   - Model Evaluation lands right after Supervised ML, so students meet
-#     validation immediately after building their first predictive models
-#     and before those habits set.
-#   - Emulation and Remote Sensing follow Deep Learning, since both lean on
-#     the CNN material.
-#   - Uncertainty and Interpretability are grouped as the "can I trust this?"
-#     block, after students have models worth interrogating.
-#   - Foundation Models and Ethics close the course, where they double as
-#     context for the final project.
+# Assignments follow the syllabus convention: the assignment listed under a
+# week is DUE the Monday of the following week and covers that week's material.
+# Weeks 12-14 carry no assignment.
 #
-# ---------------------------------------------------------------------------
-# ASSIGNMENT SCHEDULE (ten assignments, one per teaching week)
-# ---------------------------------------------------------------------------
-# Assignment numbers follow course order: each is assigned in the week its
-# material is taught. Assignments 3 and 6-10 are not written yet and are
-# commented out in place, so the intended slot is visible.
+# Three units are not on the syllabus as separate weeks and have been folded
+# into the closest one:
+#   - uncertainty            -> Week 5 (model evaluation)
+#   - remote sensing (x3)    -> Week 10 (CNNs; its natural application)
+#   - physicsai              -> Week 12 (advanced topics)
 #
-#   A1  Data preprocessing -- tropical cyclone records          [written]
-#   A2  Supervised ML -- random forests on air quality          [written]
-#   A3  Model evaluation -- re-validate A2 honestly             [to write]
-#   A4  Unsupervised ML -- climate zones (was Assignment3)      [written]
-#   A5  Deep learning -- flood risk NN (was Assignment4)        [written]
-#   A6  Climate model emulation                                 [to write]
-#   A7  Remote sensing -- land cover classification             [to write]
-#   A8  Uncertainty + interpretability                          [to write]
-#   A9  Downscaling / forecasting                               [to write]
-#   A10 Foundation models -- evaluate a pretrained model        [to write]
-#
-# Notes on the mapping:
-#   - Introduction and Working with Climate Data carry no assignment of their
-#     own; the git/repo setup students need is Part 6 of A1.
-#   - A8 spans two parts (Uncertainty and Interpretability) rather than
-#     splitting into two thin assignments. It is listed under Uncertainty.
-#   - Generative Models and Ethics carry no coding assignment. Ethics feeds
-#     the final paper instead, which is where that material is assessed.
-#   - A3 is deliberately a re-analysis of A2 rather than a new dataset:
-#     students re-validate a model they already built, which is the cheapest
-#     way to make the lesson land.
+# Pages marked below as stubs are placeholders awaiting real content.
 # ---------------------------------------------------------------------------
 parts:
-  - caption: Introduction
+  - caption: "Week 1 — Intro and Review"
     chapters:
     - file: lectures_ML/Introduction/What-is-ML
     - file: lectures_ML/Introduction/ML-for-climate-env
     - file: lectures_ML/Introduction/computing-environment
+    - file: assignments/Assignment1          # stub
 
-  # PLANNED -- working with real climate data at scale: xarray, zarr, dask,
-  # cloud-hosted archives. Currently the course jumps from "computing
-  # environment" straight to modeling with no coverage of the data stack.
-  # - caption: Working with Climate Data
-  #   chapters:
-  #   - file: lectures_ML/ClimateData/climatedata
-  #   - file: lectures_ML/ClimateData/xarray_tutorial
-  #   - file: lectures_ML/ClimateData/cloud_data
-
-  - caption: Data Preprocessing and Feature Engineering
+  - caption: "Week 2 — Data Preprocessing"
     chapters:
     - file: lectures_ML/DataPreprocessing/datapreprocessing
     - file: lectures_ML/DataPreprocessing/datapreparation
-    - file: assignments/Assignment1
+    - file: assignments/Assignment2
 
-  - caption: Introduction to Supervised Machine Learning
+  - caption: "Week 3 — Supervised Learning: Classification and Regression"
     chapters:
     - file: lectures_ML/SupervisedML/supervisedml
     - file: lectures_ML/SupervisedML/classification
     - file: lectures_ML/SupervisedML/regression
+    - file: assignments/Assignment3          # stub
+
+  - caption: "Week 4 — Supervised Learning: Decision Trees"
+    chapters:
     - file: lectures_ML/SupervisedML/treesforests
     - file: lectures_ML/SupervisedML/randomforests
-    - file: assignments/Assignment2
+    - file: assignments/Assignment4
 
-  # NEW -- written. Covers baselines, spatial/temporal autocorrelation,
-  # blocked and forward-chaining cross-validation, leakage, and the
-  # extrapolation limits of tree ensembles.
-  - caption: Model Evaluation and Validation
+  - caption: "Week 5 — Model Evaluation and Validation"
     chapters:
     - file: lectures_ML/ModelEvaluation/modelevaluation
     - file: lectures_ML/ModelEvaluation/validation
-    - file: assignments/Assignment3
+    - file: lectures_ML/Uncertainty/uncertainty     # stub; folded in from off-schedule
+    - file: assignments/Assignment5          # stub
 
-  - caption: Unsupervised Machine Learning
+  - caption: "Week 6 — Unsupervised Learning: Dimensionality Reduction"
     chapters:
     - file: lectures_ML/UnsupervisedML/unsupervisedML
     - file: lectures_ML/UnsupervisedML/dimensionalityreduction
-    - file: lectures_ML/UnsupervisedML/clustering
     - file: lectures_ML/UnsupervisedML/PCA
-    - file: assignments/Assignment4
+    - file: assignments/Assignment6          # stub
 
-  - caption: Introduction to Deep Learning
+  - caption: "Week 7 — Unsupervised Learning: Clustering"
+    chapters:
+    - file: lectures_ML/UnsupervisedML/clustering
+    - file: assignments/Assignment7
+
+  # Week 8, November 2 -- FALL BREAK, no class.
+
+  - caption: "Week 9 — Deep Learning: Artificial Neural Networks"
     chapters:
     - file: lectures_ML/DeepLearning/ann
     - file: lectures_ML/DeepLearning/ann_tutorial
+    - file: assignments/Assignment8
+
+  - caption: "Week 10 — Deep Learning: Convolutional and Recurrent Networks"
+    chapters:
     - file: lectures_ML/DeepLearning/cnn
     - file: lectures_ML/DeepLearning/cnn_tutorial
     - file: lectures_ML/DeepLearning/rnn
     - file: lectures_ML/DeepLearning/rnn_tutorial
-    - file: assignments/Assignment5
-
-  # STUB -- closes a stated course objective ("become familiar with climate
-  # model emulation"). Overview page is a placeholder; the tutorials below
-  # are still to be written.
-  - caption: Climate Model Emulation
-    chapters:
-    - file: lectures_ML/Emulation/emulation
-    # - file: lectures_ML/Emulation/emulation_tutorial
-    # - file: lectures_ML/Emulation/parameter_sensitivity
-    - file: assignments/Assignment6
-
-  # NEW -- written. Closes the second gap: the course description advertises
-  # "tracking emissions and mapping land use change with satellite data".
-  # Both notebooks call back to the Model Evaluation unit, since remote
-  # sensing is the clearest case of spatial leakage.
-  - caption: Remote Sensing and Geospatial ML
-    chapters:
+    # Remote sensing folded in here: it is the canonical CNN application.
     - file: lectures_ML/RemoteSensing/remotesensing
     - file: lectures_ML/RemoteSensing/landcover_classification
     - file: lectures_ML/RemoteSensing/plume_detection
-    - file: assignments/Assignment7
+    - file: assignments/Assignment9          # stub
 
-  # STUB -- ensembles, calibration, conformal prediction. Pairs with the
-  # Model Evaluation part; a point prediction with no error bar is not a
-  # scientific result. A8 spans this part and Interpretability.
-  - caption: Uncertainty Quantification
-    chapters:
-    - file: lectures_ML/Uncertainty/uncertainty
-    # - file: lectures_ML/Uncertainty/ensembles_calibration
-    # - file: lectures_ML/Uncertainty/conformal_prediction
-    - file: assignments/Assignment8
-
-  # PLANNED -- SHAP, permutation importance, saliency maps. Serves the stated
-  # objective about critically assessing strengths and limitations.
-  # (Assessed by A8, above -- no separate assignment.)
-  # - caption: Interpretability and Explainable AI
-  #   chapters:
-  #   - file: lectures_ML/Interpretability/interpretability
-  #   - file: lectures_ML/Interpretability/feature_attribution
-  #   - file: lectures_ML/Interpretability/saliency_maps
-
-  # Renamed from "Advanced Topics" -- the existing pages are all generative
-  # models, so the caption now says so.
-  - caption: Generative Models
+  - caption: "Week 11 — Deep Learning: Generative Models"
     chapters:
     - file: lectures_ML/AdvancedTopics/generativemodels
-    - file: lectures_ML/AdvancedTopics/gansdiffusion
     - file: lectures_ML/AdvancedTopics/vaes
+    - file: lectures_ML/AdvancedTopics/gansdiffusion
     - file: lectures_ML/AdvancedTopics/generative_tutorial
+    - file: assignments/Assignment10         # stub
+
+  - caption: "Week 12 — Advanced Topics: Foundation Models for Climate"
+    chapters:
+    - file: lectures_ML/FoundationModels/foundationmodels   # stub
+    - file: lectures_ML/Emulation/emulation                 # stub
+    - file: lectures_ML/Applications/forecasting            # stub
     - file: lectures_ML/AdvancedTopics/physicsai
+    # No assignment -- syllabus lists none for weeks 12-14.
 
-  # PLANNED -- the applied payoff units. Downscaling gives the diffusion
-  # material a genuine climate use case; S2S forecasting gives the RNN
-  # material a real target.
-  - caption: Forecasting, Downscaling, and Extremes
+  - caption: "Week 13 — Ethics and Policy of ML and AI"
     chapters:
-    - file: lectures_ML/Applications/forecasting
-    # - file: lectures_ML/Applications/downscaling
-    # - file: lectures_ML/Applications/s2s_forecasting
-    # - file: lectures_ML/Applications/extreme_events
-    - file: assignments/Assignment9
+    - file: lectures_ML/Ethics/ethics                       # stub
 
-  # STUB -- GraphCast, Pangu, Aurora, ClimaX, AIFS. Where the field
-  # actually is right now; students will ask about these regardless.
-  - caption: Foundation Models for Weather and Climate
-    chapters:
-    - file: lectures_ML/FoundationModels/foundationmodels
-    # - file: lectures_ML/FoundationModels/weather_models
-    # - file: lectures_ML/FoundationModels/using_pretrained
-    - file: assignments/Assignment10
-
-  # PLANNED -- currently offered as a final paper topic but never taught.
-  # Includes the energy and water footprint of training, which is pointed
-  # material for a climate course. Assessed by the final paper, not by a
-  # coding assignment.
-  # - caption: Ethics, Policy, and the Cost of Compute
-  #   chapters:
-  #   - file: lectures_ML/Ethics/ethics
-  #   - file: lectures_ML/Ethics/compute_footprint
-  #   - file: lectures_ML/Ethics/policy_implications
+  # Week 14, December 14 -- final project presentations, no reading.

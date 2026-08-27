@@ -1,37 +1,37 @@
-# Assignment 6: Building a Climate Model Emulator
+# Assignment 6: Dimensionality Reduction
 
 ```{admonition} Not yet released
 :class: note
-This assignment has not been posted yet. It will be released when the
-**Climate Model Emulation** unit is covered in class. The outline below is provisional and
-describes what the assignment is expected to ask you to do.
+This assignment has not been posted yet. It is due **Monday, October 20** and covers the
+material from **Week 6 — Unsupervised Learning: Dimensionality Reduction**. The outline below is provisional.
 ```
 
 ## What this assignment will cover
 
-Climate models are expensive to run, which limits how much of parameter space
-anyone can explore. An **emulator** is a cheap statistical surrogate trained on a
-limited set of model runs, used to predict what the full model would have produced.
+Climate data is high-dimensional and highly correlated, which is precisely the
+situation dimensionality reduction is designed for.
 
 You will:
 
-- Train an emulator that maps forcing or parameter settings to a climate response
-- Evaluate it on held-out runs, including runs outside the training range
-- Quantify where the emulator is trustworthy and where it is not
-- Use the emulator to explore a region of parameter space the training runs did not
-  cover, and state clearly how much confidence that exploration deserves
+- Apply principal component analysis to a spatial climate field
+- Interpret the leading modes physically — in climate science these are the
+  empirical orthogonal functions, and the leading ones often correspond to known
+  modes of variability
+- Examine the explained variance and justify how many components to retain
+- Reconstruct the field from a truncated set of components and quantify what was lost
+- Discuss what PCA assumes, and where those assumptions are questionable for
+  geophysical data
 
 ## Prerequisites
 
-Assignments 2, 3 and 5. Regression, neural networks, and validation.
+Assignments 2 and 5, and the Week 6 lecture material.
 
 ## Notes
 
-Pay attention to the extrapolation material from the Model Evaluation unit. An
-emulator asked about conditions outside its training range is exactly the failure
-case discussed there.
+The physical interpretation of the leading modes is the part that matters. Any
+library can return eigenvectors; saying what they mean is the skill.
 
 ## Submitting
 
 Push your completed notebook to your `ml4climate2026` repository, as described in
-Assignment 1, Part 6.
+Assignment 1.

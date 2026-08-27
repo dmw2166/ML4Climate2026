@@ -1,47 +1,56 @@
 # Table of contents — accessible pilot.
-# Mirrors the main book's _toc.yml so page names match. Grows as more units
-# are ported into ML4Climate2026/.
+# Mirrors the main book's week structure so page names match. Weeks whose
+# pages have not been ported yet (Model Evaluation, Remote Sensing, Foundation
+# Models, Ethics) are absent rather than empty.
 format: jb-book
 root: intro
 parts:
-  - caption: Introduction
+  - caption: "Week 1 — Intro and Review"
     chapters:
       - file: lectures_ML/Introduction/What-is-ML
       - file: lectures_ML/Introduction/ML-for-climate-env
       - file: lectures_ML/Introduction/computing-environment
-  - caption: Data Preprocessing and Feature Engineering
+  - caption: "Week 2 — Data Preprocessing"
     chapters:
       - file: lectures_ML/DataPreprocessing/datapreprocessing
       - file: lectures_ML/DataPreprocessing/datapreparation
-      - file: assignments/Assignment1
-  - caption: Introduction to Supervised Machine Learning
+      - file: assignments/Assignment2
+  - caption: "Week 3 — Supervised Learning: Classification and Regression"
     chapters:
       - file: lectures_ML/SupervisedML/supervisedml
       - file: lectures_ML/SupervisedML/classification
       - file: lectures_ML/SupervisedML/regression
+  - caption: "Week 4 — Supervised Learning: Decision Trees"
+    chapters:
       - file: lectures_ML/SupervisedML/treesforests
       - file: lectures_ML/SupervisedML/randomforests
-      - file: assignments/Assignment2
-  - caption: Unsupervised Machine Learning
+      - file: assignments/Assignment4
+  - caption: "Week 6 — Unsupervised Learning: Dimensionality Reduction"
     chapters:
       - file: lectures_ML/UnsupervisedML/unsupervisedML
       - file: lectures_ML/UnsupervisedML/dimensionalityreduction
-      - file: lectures_ML/UnsupervisedML/clustering
       - file: lectures_ML/UnsupervisedML/PCA
-      - file: assignments/Assignment4
-  - caption: Introduction to Deep Learning
+  - caption: "Week 7 — Unsupervised Learning: Clustering"
+    chapters:
+      - file: lectures_ML/UnsupervisedML/clustering
+      - file: assignments/Assignment7
+  - caption: "Week 9 — Deep Learning: Artificial Neural Networks"
     chapters:
       - file: lectures_ML/DeepLearning/ann
       - file: lectures_ML/DeepLearning/ann_tutorial
+      - file: assignments/Assignment8
+  - caption: "Week 10 — Deep Learning: Convolutional and Recurrent Networks"
+    chapters:
       - file: lectures_ML/DeepLearning/cnn
       - file: lectures_ML/DeepLearning/cnn_tutorial
       - file: lectures_ML/DeepLearning/rnn
       - file: lectures_ML/DeepLearning/rnn_tutorial
-      - file: assignments/Assignment5
-  - caption: Generative Models
+  - caption: "Week 11 — Deep Learning: Generative Models"
     chapters:
       - file: lectures_ML/AdvancedTopics/generativemodels
-      - file: lectures_ML/AdvancedTopics/gansdiffusion
       - file: lectures_ML/AdvancedTopics/vaes
+      - file: lectures_ML/AdvancedTopics/gansdiffusion
       - file: lectures_ML/AdvancedTopics/generative_tutorial
+  - caption: "Week 12 — Advanced Topics"
+    chapters:
       - file: lectures_ML/AdvancedTopics/physicsai

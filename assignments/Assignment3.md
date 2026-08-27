@@ -1,39 +1,36 @@
-# Assignment 3: Re-validating a Model Honestly
+# Assignment 3: Classification and Regression
 
 ```{admonition} Not yet released
 :class: note
-This assignment has not been posted yet. It will be released when the
-**Model Evaluation and Validation** unit is covered in class. The outline below is provisional and
-describes what the assignment is expected to ask you to do.
+This assignment has not been posted yet. It is due **Monday, October 6** and covers the
+material from **Week 3 — Supervised Learning: Classification and Regression**. The outline below is provisional.
 ```
 
 ## What this assignment will cover
 
-You will revisit the random forest you trained in **Assignment 2** and ask a
-harder question about it: how much of that performance was real?
+You will fit and compare the linear models introduced in class on an
+environmental dataset.
 
 You will:
 
-- Establish appropriate baselines for the target variable, and report your model
-  against them rather than in isolation
-- Re-split the data using a scheme that respects its structure, rather than a
-  random split over rows
-- Compare the original reported score with the score under honest validation, and
-  quantify the difference
-- Check whether any preprocessing step saw data it should not have
-- Write a short assessment of whether the model's original result would survive
-  peer review, and what you would need to change to make it defensible
+- Fit a linear regression to predict a continuous environmental variable, and
+  interpret the coefficients physically rather than only statistically
+- Fit a logistic regression for a binary outcome and interpret the decision boundary
+- Extend to a multi-class problem with softmax regression
+- Compare against a support vector machine and describe where the two differ
+- Report the appropriate metrics for each task, and explain why accuracy alone is
+  insufficient for the classification problem
 
 ## Prerequisites
 
-Assignment 2, and the *Model Evaluation and Validation* unit.
+Assignment 2, and the Week 3 lecture material.
 
 ## Notes
 
-No new dataset is involved. The point of this assignment is that re-analyzing
-a model you already built is usually more instructive than building another one.
+Interpretation carries as much weight as implementation. A model with a lower
+score that you can explain is worth more here than a better one you cannot.
 
 ## Submitting
 
 Push your completed notebook to your `ml4climate2026` repository, as described in
-Assignment 1, Part 6.
+Assignment 1.

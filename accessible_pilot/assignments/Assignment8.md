@@ -1,4 +1,4 @@
-# Assignment 5: Flood Risk Prediction with Neural Network Regression
+# Assignment 8: Flood Risk Prediction with Neural Network Regression
 
 :::{admonition} How to do this assignment (accessible version)
 :class: important
@@ -8,7 +8,7 @@ workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/compu
 Create a file `assignment4.py`, write your answer to each numbered question in
 its own labelled section (a `# Q1`, `# Q2`, ... comment helps you navigate),
 and run it with `python assignment4.py`. Turn in the `.py` script as described
-in Assignment 1, Part 6.
+in Assignment 1.
 
 Two of the questions ask for plots (a histogram grid and a scatter plot).
 Instead of relying on the pictures, answer them with **text summaries you
