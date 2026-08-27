@@ -1,5 +1,5 @@
 # Welcome to Machine Learning and Artificial Intelligence for Climate Science and Solutions
-Fall 2026 Course Website. This is a 3-credit class in the Columbia Climate School taught by [Prof. Dan Westervelt](https://aerosol.ldeo.columbia.edu/). This course website was developed from an [original version](https://kdlamb.github.io/ML4Climate2026/intro.html) created by Dr. Kara Lamb. 
+Fall 2026 Course Website. This is a 3-credit class in the Columbia Climate School taught by [Prof. Dan Westervelt](https://aerosol.ldeo.columbia.edu/). This course website was developed from an [original version](https://kdlamb.github.io/ML4Climate2026/intro.html) created by [Dr. Kara Lamb](https://kdlamb.github.io/). 
 
 
 ## Course Description
@@ -22,7 +22,7 @@ By the end of this course, students will:
 
 ## Course structure
 
-We meet **Mondays 4:10 - 6:40** (TBD). Most classes are split in two: the **first half** is a lecture covering new material, and the **second half** is **hands-on coding** where you work through tutorials guided by the instructor. Bring a laptop to every class — you'll spend a large fraction of class time writing and running code, not just listening. We use the [] to access datasets and to train and evaluate models in Jupyter notebooks.
+We meet **Mondays 4:10 - 6:40** (TBD). Most classes will include at least 2 of the 3 elements: a lecture covering new material, a hands-on coding tutorial guided by the instructor, and/or collaborative time with classmates and the instructor to work on class assignments. Bring a laptop to every class as you'll spend a large fraction of class time writing and running code, not just listening. We use the [] to access datasets and to train and evaluate models in Jupyter notebooks.
 
 
 ## Assignments and grading
