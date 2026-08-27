@@ -1,24 +1,26 @@
-# Assignment 9: Convolutional and Recurrent Networks
+# Assignment 9: Cloud type classification from satellite imagery with CNNs
 
 ```{admonition} Not yet released
 :class: note
-This assignment has not been posted yet. It is due **Monday, November 24** and covers the
-material from **Week 10 — Deep Learning: CNNs and RNNs**. The outline below is provisional.
+This assignment has not been posted yet. It is due **Monday, November 23** and covers the
+material from **Week 10 — Deep Learning: Convolutional and Recurrent Networks**. The outline below is provisional.
 ```
-
 ## What this assignment will cover
 
-This assignment covers both architectures from Week 10, applied to problems that
-suit their respective inductive biases.
+Cloud classification is a natural convolutional problem: cloud types are defined by
+texture and spatial organization rather than by the brightness of any single pixel, which is
+precisely the structure a CNN is built to exploit.
 
 You will:
 
-- Train a convolutional network on gridded or image-like environmental data
-- Examine what the learned filters respond to
-- Train a recurrent network (LSTM or GRU) on a time series forecasting problem
-- Compare against the persistence baseline at several lead times
-- Explain why a CNN suits spatial data and an RNN suits sequential data, in terms
-  of the structure each architecture assumes about its input
+- Train a convolutional network to classify cloud types from satellite imagery
+- Examine what the learned filters respond to, and whether those features are physically sensible
+- Apply data augmentation, and measure whether it helps
+- Try transfer learning from a pretrained network, and compare against training from scratch
+- Validate in a way that reflects the spatial structure of the data — neighbouring image tiles
+  are not independent samples
+- Report which cloud types are confused with one another, and say whether the fix is a better
+  model or better data
 
 ## Prerequisites
 
@@ -26,8 +28,9 @@ Assignment 8, and the Week 10 lecture material.
 
 ## Notes
 
-Beating persistence at short lead times is harder than it looks. If your model
-does not beat it, report that honestly and diagnose why.
+Confusion between visually similar cloud types is expected and is not in itself a
+failure. Diagnosing *why* particular pairs are confused is worth more than a higher overall
+accuracy.
 
 ## Submitting
 

@@ -1,27 +1,29 @@
-# Assignment 10: Generative Models
+# Assignment 10: Anomaly detection in air quality sensor data with autoencoders
 
 ```{admonition} Not yet released
 :class: note
-This assignment has not been posted yet. It is due **Monday, December 1** and covers the
+This assignment has not been posted yet. It is due **Monday, November 30** and covers the
 material from **Week 11 — Deep Learning: Generative Models**. The outline below is provisional.
 ```
-
 ## What this assignment will cover
 
-Generative models learn a distribution rather than a mapping, which makes them
-useful for problems where the goal is plausible samples rather than a single
-prediction.
+An autoencoder trained on normal data learns to reconstruct it well. Feed it something
+unusual and the reconstruction degrades — which turns a generative model into an anomaly
+detector, without ever needing labelled examples of what "anomalous" looks like.
+
+This is genuinely useful for sensor networks, where faults, drift, and unusual pollution events
+all need catching and nobody has labelled them in advance.
 
 You will:
 
-- Train an autoencoder and inspect what its latent space has organized
-- Train a variational autoencoder and sample from it
-- Compare the samples against the training distribution — do they reproduce its
-  statistics, or only its mean behavior?
-- Describe how a GAN and a diffusion model differ in how they are trained, and what
-  that implies for stability and sample quality
-- Discuss one climate application where generating plausible samples is more useful
-  than predicting a single expected value
+- Train an autoencoder on a period of normal air quality sensor data
+- Use reconstruction error to score how anomalous each observation is
+- Choose an operating threshold, and justify it in terms of the cost of a false alarm versus a
+  missed event
+- Compare against simple statistical baselines, such as a rolling z-score
+- Distinguish, where you can, between sensor faults and genuine pollution episodes — both raise
+  the reconstruction error, and only one is a data quality problem
+- Explain how a **variational** autoencoder differs, and what its latent space buys you
 
 ## Prerequisites
 
@@ -29,9 +31,9 @@ Assignments 8 and 9, and the Week 11 lecture material.
 
 ## Notes
 
-Evaluating a generative model is genuinely harder than evaluating a predictive
-one, since there is no single right answer to score against. Part of this assignment
-is confronting that.
+Evaluating an unsupervised detector is harder than evaluating a classifier, because you
+have no labels to score against. Confronting that honestly — and saying how you would validate
+this if it were deployed — is part of the assignment.
 
 ## Submitting
 
