@@ -10,6 +10,8 @@ logo: logo_class.png
 # at /accessible/); keep the main book from globbing its pages.
 exclude_patterns:
   - accessible_pilot
+  # Solution keys — local only, never published. Also gitignored.
+  - solutions
   # Zoom class transcripts are kept local (gitignored); don't build them as pages.
   - "**/*Transcript.md"
 
