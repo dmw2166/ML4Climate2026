@@ -30,5 +30,5 @@ and encoding data such that it is ready to pass to the machine learning algorith
 
 Next, we will work through a tutorial on data preprocessing. This will use the class GitHub repo. If you need reminders about how to access and download
 files to LEAP JupyterHub or Google Colab, you can refresh yourself here:
-[Intro to Git](https://earth-ds-ml.github.io/summer_2026/lectures_DS/computing_env/intro_to_git.html).
+[Intro to Git](https://dmw2166.github.io/comp-res-climate-data-sci/lectures/environment/intro_to_git.html).
 
