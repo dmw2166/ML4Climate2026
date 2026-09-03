@@ -10,7 +10,7 @@ managed by [2i2c](https://2i2c.org/service/):
 A lot of documentation about this hub can be found at https://leap-stc.github.io/introduction/
 
 You should already be familiar with this from CLMT 5045. 
-If you need a refresher, please check out the material here: [here](https://earth-ds-ml.github.io/summer_2026/lectures_DS/computing_env/jupyterlab_and_colab.html).
+If you need a refresher, see [Intro to JupyterLab](https://dmw2166.github.io/comp-res-climate-data-sci/lectures/environment/intro_to_jupyterlab.html).
 
 ## Computing environment and software libraries for machine learning
 There are a number of different software libraries that can be used for machine learning. Python is the most popular programming language used 

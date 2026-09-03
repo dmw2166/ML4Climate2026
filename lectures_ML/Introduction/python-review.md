@@ -1,9 +1,11 @@
 # Python review: arrays, dataframes, and plots
 
 This page is a refresher on the handful of operations Assignment 1 actually uses. It is
-deliberately short and is not a general Python tutorial — if you want one, the
-[Earth Data Science course material](https://earth-ds-ml.github.io/summer_2026/) covers this
-ground much more thoroughly.
+deliberately short and is not a general Python tutorial — if you want one,
+[Computing and Research Methods for Climate Data Science](https://dmw2166.github.io/comp-res-climate-data-sci/intro.html) covers this ground
+much more thoroughly, and its
+[NumPy and matplotlib lecture](https://dmw2166.github.io/comp-res-climate-data-sci/lectures/basic_scipy/numpy_and_matplotlib.html) maps
+directly onto this page.
 
 Everything below assumes the standard three imports:
 
