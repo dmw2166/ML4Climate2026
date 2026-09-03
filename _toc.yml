@@ -29,7 +29,8 @@ parts:
     - file: lectures_ML/Introduction/What-is-ML
     - file: lectures_ML/Introduction/ML-for-climate-env
     - file: lectures_ML/Introduction/computing-environment
-    - file: assignments/Assignment1          # stub
+    - file: lectures_ML/Introduction/python-review
+    - file: assignments/Assignment1
 
   - caption: "Week 2 — Data Preprocessing"
     chapters:
