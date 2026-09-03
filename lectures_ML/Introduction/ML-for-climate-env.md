@@ -1,4 +1,4 @@
-# Machine Learning for Climate and Environmental Sustainability
+# Machine Learning and Artificial Intelligence for Climate Science and Solutions
 
 In the last decade, machine learning has become an invaluable tool in accelerating scientific discovery. This is because
 machine learning algorithms can help with several aspects of the scientific discovery process. In particular, ML can:
