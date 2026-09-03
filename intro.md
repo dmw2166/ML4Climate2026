@@ -22,8 +22,7 @@ By the end of this course, students will:
 
 ## Course structure
 
-We meet **Mondays 4:10 - 6:40** (TBD). Most classes will include at least 2 of the 3 elements: a lecture covering new material, a hands-on coding tutorial guided by the instructor, and/or collaborative time with classmates and the instructor to work on class assignments. Bring a laptop to every class as you'll spend a large fraction of class time writing and running code, not just listening. We use the [] to access datasets and to train and evaluate models in Jupyter notebooks.
-
+We meet **Mondays 4:10 - 6:40** at the Forum. Most classes will include at least 2 of the 3 elements: a lecture covering new material, a hands-on coding tutorial guided by the instructor, and/or collaborative time with classmates and the instructor to work on class assignments. Bring a laptop to every class as you'll spend a large fraction of class time writing and running code, not just listening. We use the class server Chopin and its JupyterHub (further details [here](https://dmw2166.github.io/ML4Climate2026/lectures_ML/Introduction/computing-environment.html)) to access datasets and to train and evaluate models in Jupyter notebooks.
 
 ## Assignments and grading
 
@@ -41,17 +40,13 @@ Your grade in this course is based on:
 
 The final project counts for **40%** of your grade, in lieu of a final exam. You will find a
 real environmental or climate dataset, pose a question you can answer with it, and apply what
-you have learned to answer that question honestly.
+you have learned to answer that question.
 
-The emphasis is on *honestly*. A modest result you can defend is worth more than an
-impressive-looking one you cannot. Much of what separates useful machine learning from useless
-machine learning in this field is not the model — it is whether the person running it
-understood what their validation was actually measuring.
 
 ### Choosing a dataset
 
 Pick something real. It should be observational, model, or remote sensing data with genuine
-environmental relevance — not a cleaned teaching dataset with a known answer.
+environmental relevance and not a cleaned teaching dataset with a known answer.
 
 **You are encouraged to use data from your own research.** If you have a dataset you already
 care about, this is a good excuse to try these methods on it.
@@ -109,13 +104,6 @@ cannot beat persistence, that is a finding. Report it.
 | Interpretation and limitations — critical, physically grounded | 20% |
 | Communication — paper and presentation | 15% |
 
-### What will not score well
-
-Running three models and reporting whichever scored highest, with no baseline. A random
-train/test split on spatially or temporally correlated data with no acknowledgment. Reporting
-only the metric that flatters the result. Any accuracy above roughly 0.95 that goes
-unexamined — in this field that is usually leakage, and finding it is worth more than
-reporting it.
 
 ## Using AI in This Course
 
@@ -134,6 +122,8 @@ Rules:
 ```
 
 The goal is to use AI to build understanding, not to paste solutions you can't explain.
+
+**Important! Do not install any AI tool coding companion (e.g. Claude Code) directly onto our course server, chopin!** Not only is this over-reliance on AI, it will degrade the computing experience for others in the class by hogging memory and CPU time.
 
 **What AI is good at, and what it isn't.** Chat-based AI is genuinely useful for explaining error messages, suggesting matplotlib syntax, walking through an unfamiliar library API, or summarizing what a function does. It is less reliable for judging whether your scientific result is correct, picking the right analysis for *your* data, catching subtle bugs in numerical or coordinate-system code, or knowing what "looks right" for a specific geophysical field. Treat AI as a fast, broadly-read but inexperienced collaborator — useful for the syntax layer, not a substitute for your own scientific judgment.
 
