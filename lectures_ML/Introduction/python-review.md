@@ -1,9 +1,8 @@
 # Python review: arrays, dataframes, and plots
 
 This page is a refresher on the handful of operations Assignment 1 actually uses. It is
-deliberately short and is not a general Python tutorial — if you want one,
-[Computing and Research Methods for Climate Data Science](https://dmw2166.github.io/comp-res-climate-data-sci/intro.html) covers this ground
-much more thoroughly, and its
+deliberately short and is not a general Python tutorial. If you want one,
+[Computing and Research Methods for Climate Data Science](https://dmw2166.github.io/comp-res-climate-data-sci/intro.html) covers this ground much more thoroughly, and its
 [NumPy and matplotlib lecture](https://dmw2166.github.io/comp-res-climate-data-sci/lectures/basic_scipy/numpy_and_matplotlib.html) maps
 directly onto this page.
 
@@ -126,7 +125,7 @@ ax.grid(alpha=0.3)
 plt.show()
 ```
 
-Every figure in this course needs **axis labels with units and a title**. This is not a
+Every figure in this course needs axis labels with units. This is not a
 stylistic preference: an unlabelled axis is the most common way for a plot to mislead its
 author, not just its reader.
 
@@ -159,5 +158,4 @@ data into a prediction:
 predicted = slope * x_new + intercept
 ```
 
-Assignment 1 asks you to do exactly this, and then to think carefully about how far outside
-the fitted range the result can be trusted.
+
