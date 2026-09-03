@@ -1,12 +1,11 @@
 # ML4Climate2026
 
-Course materials for *Machine Learning for Climate Science and Environmental
-Sustainability* (Columbia Climate School, CLMT5403), Summer 2026, taught by
-Kara Lamb.
+Course materials for *Machine Learning for Climate Science and Solutions* 
+(Columbia Climate School, CLMT5120), Summer 2026, taught by
+Prof. Dan Westervelt.
 
 The course introduces the fundamental concepts and methods of machine learning
-with an emphasis on practical applications to climate science and environmental
-sustainability — data preprocessing, model selection, evaluation, and the
+with an emphasis on practical applications to climate science — data preprocessing, model selection, evaluation, and the
 ethical implications of ML in climate research — through hands-on work with
 real-world datasets.
 
