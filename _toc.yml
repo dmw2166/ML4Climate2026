@@ -102,6 +102,7 @@ parts:
     chapters:
     - file: lectures_ML/FoundationModels/foundationmodels   # stub
     - file: lectures_ML/Emulation/emulation
+    - file: lectures_ML/Emulation/emulation_tutorial
     - file: lectures_ML/Applications/forecasting            # stub
     - file: lectures_ML/AdvancedTopics/physicsai
     # No assignment -- syllabus lists none for weeks 12-14.

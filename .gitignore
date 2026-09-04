@@ -28,3 +28,7 @@ lectures_ML/DeepLearning/figures/ANNLecture/# Solution keys for the assignments.
 # course website, so these are kept out of both git and the book build. See
 # also exclude_patterns in _config.yml. Do not remove either exclusion.
 solutions/
+
+# ClimateBench data for the emulation tutorial (~900 MB, fetched from Zenodo
+# 10.5281/zenodo.7064308 by the notebook's first cell). Too big for git.
+climatebench_data/
