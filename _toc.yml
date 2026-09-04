@@ -55,7 +55,7 @@ parts:
     chapters:
     - file: lectures_ML/ModelEvaluation/modelevaluation
     - file: lectures_ML/ModelEvaluation/validation
-    - file: lectures_ML/Uncertainty/uncertainty     # stub; folded in from off-schedule
+    - file: lectures_ML/Uncertainty/uncertainty     # folded in from off-schedule
     - file: assignments/Assignment5          # stub
 
   - caption: "Week 6 — Unsupervised Learning: Dimensionality Reduction"
