@@ -1,6 +1,6 @@
 # Uncertainty Quantification
 
-Every model output is uncertain. In climate science that uncertainty is not a footnote — it is
+Every model output is uncertain. In climate science that uncertainty is not a footnote; it is
 often the result. A projection without an honest error estimate cannot support a decision, and a
 confident wrong answer is worse than an uncertain right one.
 
@@ -18,7 +18,7 @@ low-cost air quality sensor has a noise floor; no calibration model, however goo
 below it.
 
 **Epistemic uncertainty** is uncertainty about the model itself, arising because we have finite
-data. It is largest where the training data is sparse or absent, and — crucially — **it is
+data. It is largest where the training data is sparse or absent, and (crucially) **it is
 reducible**: collect more data in that region and it shrinks.
 
 The practical reason to separate them is that they call for different responses. High aleatoric
@@ -28,7 +28,7 @@ model's domain of application.
 
 They also behave differently under extrapolation, which is where this matters most for us. In
 Assignment 1 you fit a straight line to the Mauna Loa CO$_2$ record and extrapolate it forward;
-the error grows steadily the further you go. That growth is epistemic — the model has left the
+the error grows steadily the further you go. That growth is epistemic: the model has left the
 region the data constrained. A model that reports *constant* uncertainty when extrapolating is
 not reporting uncertainty at all.
 
@@ -40,7 +40,7 @@ and those are worth knowing about.
 **Gaussian processes** are the cleanest example. Rather than fitting one function, a GP maintains
 a distribution over functions consistent with the data, and returns a mean and a standard
 deviation at every input. The standard deviation is small near observations and widens where
-data is sparse — epistemic uncertainty, made visible.
+data is sparse, epistemic uncertainty, made visible.
 
 ```python
 from sklearn.gaussian_process import GaussianProcessRegressor
@@ -55,7 +55,7 @@ mean, sd = gp.predict(X_new, return_std=True)     # a distribution, not a point
 The `WhiteKernel` term is doing something specific and worth noticing: it estimates the
 *aleatoric* noise separately from the *epistemic* spread captured by the RBF term. Fit a GP to
 the CO$_2$ record and extrapolate, and the uncertainty band fans out visibly beyond the last
-observation — the model telling you, correctly, that it does not know.
+observation: the model telling you, correctly, that it does not know.
 
 GPs scale poorly (roughly cubically in the number of training points), so they are used for
 small datasets, expensive-simulation emulation, and cases where calibrated uncertainty matters
@@ -64,7 +64,7 @@ more than raw predictive power.
 **Quantile regression** is a cheaper alternative. Instead of predicting the conditional mean,
 fit several models predicting the 10th, 50th and 90th percentiles of the target, each with an
 asymmetric loss. The spread between them is a predictive interval, and it can vary with the
-inputs — wide where the process is noisy, narrow where it is not.
+inputs, wide where the process is noisy, narrow where it is not.
 
 This is a natural fit for the streamflow problem in Assignment 8. There, a network trained on
 squared error systematically **under-predicts floods**, because the loss averages over thousands
@@ -77,12 +77,12 @@ flow be?" but "how high could it plausibly get?"
 The most practical route to uncertainty for the models we actually use is to train several and
 look at the spread.
 
-- **Different random seeds** — retrain the same architecture with different initializations.
+- **Different random seeds**: retrain the same architecture with different initializations.
   Captures uncertainty from the fitting procedure.
-- **Different data subsets** — bootstrap the training data and refit. This is what a random
+- **Different data subsets**: bootstrap the training data and refit. This is what a random
   forest already does internally, which is why the spread across its trees can be read as an
   uncertainty estimate.
-- **Different model families** — a forest, a network and a linear model. Disagreement between
+- **Different model families**: a forest, a network and a linear model. Disagreement between
   them is informative in a way that disagreement between seeds is not.
 
 Ensembles are the standard approach in weather and climate for a reason: they need no special
@@ -97,7 +97,7 @@ Here is the question that matters, and the one most often skipped: **when the mo
 it right 90% of the time?**
 
 An uncertainty estimate is only useful if it is *calibrated*. A model whose 90% intervals contain
-the truth 50% of the time is not conservative or approximate — it is wrong, in a way that will
+the truth 50% of the time is not conservative or approximate; it is wrong, in a way that will
 propagate silently into every decision made from it.
 
 Checking calibration is straightforward for a regression: compute the fraction of test points
@@ -114,12 +114,12 @@ lies on the diagonal.
 
 You have already met this distinction. In Assignment 3, logistic regression and an SVM both
 classify major hurricanes about equally well, but only logistic regression emits a *calibrated
-probability* — it is fitted by maximizing the likelihood of the observed labels, which is a
+probability*; it is fitted by maximizing the likelihood of the observed labels, which is a
 proper scoring rule. The SVM's decision function ranks storms correctly but its units are
 arbitrary. For a forecaster deciding whether to order an evacuation, where the costs are wildly
 asymmetric and the action threshold is nowhere near 50%, that difference is the whole ballgame.
 
-Neural networks are, as a rule, **overconfident** — modern architectures trained to high accuracy
+Neural networks are, as a rule, **overconfident**: modern architectures trained to high accuracy
 routinely assign 99% probability to predictions that are right 85% of the time. Post-hoc methods
 such as temperature scaling or Platt scaling fit a correction on held-out data and are cheap
 insurance.
@@ -128,7 +128,7 @@ insurance.
 
 A newer approach worth knowing because it makes a guarantee the others cannot.
 
-**Conformal prediction** wraps any model — trained however you like — and produces intervals with
+**Conformal prediction** wraps any model (trained however you like) and produces intervals with
 a *distribution-free coverage guarantee*: if you ask for 90% coverage, you get at least 90%,
 without assuming anything about the shape of the errors or the correctness of the model.
 
@@ -143,7 +143,7 @@ lower, upper = model.predict(X_new) - q, model.predict(X_new) + q
 ```
 
 The guarantee rests on one assumption: that the calibration data and the new data are
-**exchangeable** — drawn from the same distribution. That assumption is exactly what
+**exchangeable**: drawn from the same distribution. That assumption is exactly what
 autocorrelated, non-stationary environmental data tends to violate, so conformal methods for
 time series need blocked or time-aware variants. The guarantee is real, but it is not free.
 
@@ -156,7 +156,7 @@ infinite precision. If you cannot quantify the uncertainty, say so in words and 
 would be needed to quantify it.
 
 **Reporting uncertainty that only covers what was easy to compute.** A spread across five
-training seeds is not the uncertainty in your prediction — it is the uncertainty from
+training seeds is not the uncertainty in your prediction; it is the uncertainty from
 initialization, which is usually the smallest contributor. Structural uncertainty in the model,
 bias in the training data, and uncertainty in the inputs are all typically larger and harder.
 State which sources your interval includes and which it does not.
@@ -170,7 +170,7 @@ determine from the data. That last clause is the one people skip, and it is ofte
 useful sentence in the report.
 
 A closing point specific to this field. Where a model's uncertainty is *largest* is frequently
-where the stakes are *highest* — the extreme events, the unprecedented conditions, the regions
+where the stakes are *highest*: the extreme events, the unprecedented conditions, the regions
 with no monitoring. The rare cases are rare in the training data too, so the model knows least
 about exactly what we most need to know. Any honest treatment of uncertainty in climate
 applications has to lead with that, rather than treating it as a caveat at the end.

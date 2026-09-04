@@ -81,7 +81,7 @@ df.head()                      # first five rows -- always look
 
 **Filtering.** The same boolean-mask idea, applied to rows. This matters for real data
 because missing values are often coded as an impossible number (`-99.99`, `-999`, `-200`)
-rather than left blank — and those sentinels will quietly ruin any average you take.
+rather than left blank, and those sentinels will quietly ruin any average you take.
 
 ```python
 df = df[df["value"] > 0]       # drop rows with a negative sentinel
@@ -106,7 +106,7 @@ df.groupby("year")["value"].count()     # how many observations in each year
 
 Two related methods worth knowing: `.idxmax()` and `.idxmin()` give the *label* of the
 largest and smallest entry rather than the value itself, and `.diff()` gives the change from
-one row to the next — which turns a series of annual means into a series of year-over-year
+one row to the next, which turns a series of annual means into a series of year-over-year
 increases.
 
 ## Plotting
@@ -151,7 +151,7 @@ slope, intercept = np.polyfit(x, y, 1)
 ```
 
 Those two numbers *are* the fitted model. You can evaluate them at any inputs you like,
-including ones that were not part of the fit — which is what turns a description of past
+including ones that were not part of the fit, which is what turns a description of past
 data into a prediction:
 
 ```python

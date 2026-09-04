@@ -28,9 +28,9 @@ We meet **Mondays 4:10 - 6:40** at the Forum. Most classes will include at least
 
 Your grade in this course is based on:
 
-- **50%** — coding assignments
-- **40%** — final project and presentation
-- **10%** — attendance and participation
+- **50%**: coding assignments
+- **40%**: final project and presentation
+- **10%**: attendance and participation
 
 
 **Coding assignments.** There are **ten** coding assignments, assigned each week, following the material covered in class. Each is due by **Monday at midnight of the following week** (e.g. the assignment given at the start of week 2 is due Monday of week 3). 
@@ -61,7 +61,7 @@ Bring your dataset choice to office hours early if you are unsure whether it wil
 
 1. **A clear question.** State what you are predicting or discovering, and why it matters.
    "I applied a random forest to this dataset" is not a question.
-2. **A baseline.** Compare against the appropriate naive predictor — climatology, persistence,
+2. **A baseline.** Compare against the appropriate naive predictor: climatology, persistence,
    the majority class, or simple linear regression. Report it alongside your model.
 3. **A validation scheme that matches the application.** If your data has spatial or temporal
    structure, a random train/test split will overstate your skill. Justify the scheme you
@@ -70,7 +70,7 @@ Bring your dataset choice to office hours early if you are unsure whether it wil
    statement of what you could not quantify and why.
 5. **Interpretation.** What did the model learn? Does it agree with physical intuition? Where
    does it fail, and is that failure telling you something?
-6. **Limitations.** What would you need to trust this result — more data, different data, a
+6. **Limitations.** What would you need to trust this result: more data, different data, a
    different method? What are the practical or ethical considerations if someone acted on it?
 
 ```{admonition} Negative results are fine
@@ -81,10 +81,10 @@ cannot beat persistence, that is a finding. Report it.
 
 ### Deliverables
 
-- **Code** — a GitHub repository with your notebook(s) and a README that lets someone reproduce
+- **Code**: a GitHub repository with your notebook(s) and a README that lets someone reproduce
   your work
-- **Paper** — 5 pages, excluding figures and references
-- **Presentation** — 10 minutes plus questions, in class on December 14
+- **Paper**: 5 pages, excluding figures and references
+- **Presentation**: 10 minutes plus questions, in class on December 14
 
 ### Timeline
 
@@ -98,18 +98,18 @@ cannot beat persistence, that is a finding. Report it.
 
 | Component | Weight |
 | --- | --- |
-| Question and dataset — well-posed, appropriate, genuinely used | 15% |
-| Methods — sound choices, correctly implemented | 25% |
-| Validation and baselines — honest, justified, correctly applied | 25% |
-| Interpretation and limitations — critical, physically grounded | 20% |
-| Communication — paper and presentation | 15% |
+| Question and dataset: well-posed, appropriate, genuinely used | 15% |
+| Methods: sound choices, correctly implemented | 25% |
+| Validation and baselines: honest, justified, correctly applied | 25% |
+| Interpretation and limitations: critical, physically grounded | 20% |
+| Communication: paper and presentation | 15% |
 
 
 ## Using AI in This Course
 
 Large Language Models (LLMs) such as ChatGPT, Google Gemini, Claude, etc., are rapidly changing norms in higher education. Some of what these tools provide can be useful and helpful, but overreliance on LLMs is a risk. Asking an LLM to do an assignment for you will do you a major disservice in your future career, as you will not be learning and acquiring the skills needed to succeed in a career in climate. Additionally, the LLMs are prone to mistakes. Use of LLMs is allowed in this class; however, you must cite your use of it in your assignments. You may use whichever one you like, but note that Google Gemini is available for free to Columbia students: [https://www.cuit.columbia.edu/content/google-gemini]. An example of acceptable use citation might look like “Used Claude Fable 5 to look up syntax for creating a filled contour plot”. Unacceptable use would be copying and pasting code that you can’t explain. You are responsible for understanding and being able to explain your work.  The instructor and/or TAs reserve the right to ask you questions about your assignment if they suspect over-reliance on LLMs. If you are not understanding the code or material, that is a sign to revisit the material, ask questions, go to office hours, etc., and not to rely further on LLMs. 
 
-**How to use it — Socratic mode.** Default to asking the AI to *teach* you, not to *do it for you*. At the start of a working session, prime your chat with a tutor prompt. Here is an example. Feel free to adapt it as you learn what works:
+**How to use it, Socratic mode.** Default to asking the AI to *teach* you, not to *do it for you*. At the start of a working session, prime your chat with a tutor prompt. Here is an example. Feel free to adapt it as you learn what works:
 
 ```
 You are acting as my Socratic Tutor for a graduate-level Machine Learning and Climate Science
@@ -125,6 +125,6 @@ The goal is to use AI to build understanding, not to paste solutions you can't e
 
 **Important! Do not install any AI tool coding companion (e.g. Claude Code) directly onto our course server, chopin!** Not only is this over-reliance on AI, it will degrade the computing experience for others in the class by hogging memory and CPU time.
 
-**What AI is good at, and what it isn't.** Chat-based AI is genuinely useful for explaining error messages, suggesting matplotlib syntax, walking through an unfamiliar library API, or summarizing what a function does. It is less reliable for judging whether your scientific result is correct, picking the right analysis for *your* data, catching subtle bugs in numerical or coordinate-system code, or knowing what "looks right" for a specific geophysical field. Treat AI as a fast, broadly-read but inexperienced collaborator — useful for the syntax layer, not a substitute for your own scientific judgment.
+**What AI is good at, and what it isn't.** Chat-based AI is genuinely useful for explaining error messages, suggesting matplotlib syntax, walking through an unfamiliar library API, or summarizing what a function does. It is less reliable for judging whether your scientific result is correct, picking the right analysis for *your* data, catching subtle bugs in numerical or coordinate-system code, or knowing what "looks right" for a specific geophysical field. Treat AI as a fast, broadly-read but inexperienced collaborator, useful for the syntax layer, not a substitute for your own scientific judgment.
 
 

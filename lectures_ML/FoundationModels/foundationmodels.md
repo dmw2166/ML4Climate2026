@@ -7,8 +7,7 @@ outline below describes the material this unit will cover.
 ```
 
 Over the last few years, large machine-learned models trained on reanalysis data
-have gone from research curiosities to systems that compete with — and on some
-measures beat — traditional numerical weather prediction, at a tiny fraction of the
+have gone from research curiosities to systems that compete with (and on some measures beat) traditional numerical weather prediction, at a tiny fraction of the
 inference cost.
 
 This unit covers what these models are, what changed to make them work, and how to

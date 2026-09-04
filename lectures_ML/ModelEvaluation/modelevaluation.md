@@ -9,7 +9,7 @@ sources of published results that do not hold up.
 
 The usual approach is to hold out a random subset of the data, train on the rest, and report
 performance on the held-out portion. This works when samples are **independent and identically
-distributed** — when knowing one sample tells you nothing about another.
+distributed**: when knowing one sample tells you nothing about another.
 
 Environmental data violate this assumption almost everywhere:
 
@@ -23,15 +23,15 @@ Environmental data violate this assumption almost everywhere:
 
 When samples are correlated, a random split places near-copies of the test data into the training
 set. The model can score well by effectively looking up answers rather than learning a
-relationship, and the reported skill is inflated — sometimes dramatically.
+relationship, and the reported skill is inflated, sometimes dramatically.
 
 ## Baselines
 
 A performance number in isolation means nothing. It only becomes interpretable next to a baseline.
 Two are conventional in climate and weather work:
 
-- **Climatology** — predict the long-term average for that location and time of year
-- **Persistence** — predict that conditions will stay as they are now
+- **Climatology**: predict the long-term average for that location and time of year
+- **Persistence**: predict that conditions will stay as they are now
 
 These are often surprisingly hard to beat, and that is the point. A model that explains most of
 the variance in a temperature series may still be adding nothing over persistence. Reporting your
@@ -49,7 +49,7 @@ actually be used.**
 - Projecting a future climate state? Ask whether your model can extrapolate at all.
 
 That last case is specific to this field and deserves emphasis. Much of climate science asks
-models to make predictions about conditions that have never been observed — warmer mean states,
+models to make predictions about conditions that have never been observed, warmer mean states,
 higher greenhouse gas concentrations, more extreme events than are in the historical record. Some
 model families handle this reasonably; others fail completely and without warning. Knowing which
 you are working with matters more than squeezing out another point of validation skill.

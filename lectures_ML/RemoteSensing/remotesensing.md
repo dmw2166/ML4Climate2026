@@ -1,15 +1,14 @@
 # Remote Sensing and Geospatial Machine Learning
 
 Satellites are the only instrument we have that observes the whole planet, repeatedly, with a
-consistent measurement. That combination — global coverage, regular revisit, uniform
-methodology — is what makes remote sensing central to climate and environmental science, and
+consistent measurement. That combination (global coverage, regular revisit, uniform methodology) is what makes remote sensing central to climate and environmental science, and
 it is also what makes it a natural fit for machine learning. A single Sentinel-2 scene contains
 more pixels than a person could inspect in a lifetime, and the archive grows by terabytes a day.
 
 ## What a satellite actually measures
 
 It is worth being precise about this, because it shapes everything downstream. A passive optical
-sensor measures **radiance** — the energy arriving at the detector in a set of wavelength bands.
+sensor measures **radiance**: the energy arriving at the detector in a set of wavelength bands.
 After correcting for atmospheric effects, this is converted to **surface reflectance**: the
 fraction of incoming sunlight the surface sends back, in each band.
 
@@ -33,14 +32,14 @@ basis for what follows:
 
 Every sensor represents a trade-off, and no satellite is good at everything:
 
-- **Spatial** — how large an area one pixel covers (Sentinel-2: 10–60 m; MODIS: 250–1000 m)
-- **Spectral** — how many bands, and how narrow (multispectral: ~10 bands;
+- **Spatial**: how large an area one pixel covers (Sentinel-2: 10–60 m; MODIS: 250–1000 m)
+- **Spectral**: how many bands, and how narrow (multispectral: ~10 bands;
   hyperspectral: hundreds)
-- **Temporal** — how often the sensor revisits (Sentinel-2: ~5 days; geostationary: minutes)
-- **Radiometric** — how finely the sensor resolves brightness differences
+- **Temporal**: how often the sensor revisits (Sentinel-2: ~5 days; geostationary: minutes)
+- **Radiometric**: how finely the sensor resolves brightness differences
 
 The trade-off is physical, not technological. Finer spatial resolution means fewer photons per
-pixel, which must be paid for with a wider band or a longer dwell — so higher spatial resolution
+pixel, which must be paid for with a wider band or a longer dwell, so higher spatial resolution
 generally costs spectral resolution or revisit frequency. Choosing a sensor means deciding which
 of these your problem actually needs. Mapping individual buildings needs spatial resolution;
 tracking a plume needs revisit frequency; identifying a gas needs spectral resolution.
@@ -58,23 +57,23 @@ deep learning (CNNs exploiting spatial structure) have natural roles.
 
 **Labels are the bottleneck.** Imagery is abundant; ground truth is expensive. Much of the
 methodological work in this field is about learning effectively from limited, unevenly
-distributed labels — which is also why validation is so easy to get wrong here.
+distributed labels, which is also why validation is so easy to get wrong here.
 
 ## Applications in climate and environmental work
 
-- **Land cover and land use change** — deforestation, agricultural expansion, urban growth.
+- **Land cover and land use change**: deforestation, agricultural expansion, urban growth.
   Land use change is a major term in the carbon budget, and satellites are how it is quantified.
-- **Emissions detection** — methane plumes from oil and gas infrastructure and landfills, using
+- **Emissions detection**: methane plumes from oil and gas infrastructure and landfills, using
   instruments like TROPOMI, EMIT, and commercial hyperspectral sensors. Methane has an outsized
   near-term warming effect and leaks are often unreported, so detection has direct mitigation value.
-- **Biomass and carbon stocks** — estimating above-ground carbon from optical, radar, and lidar
-- **Surface properties for climate models** — albedo, land surface temperature, snow and ice extent
-- **Disaster response and attribution** — flood extent, burn scars, drought monitoring
+- **Biomass and carbon stocks**: estimating above-ground carbon from optical, radar, and lidar
+- **Surface properties for climate models**: albedo, land surface temperature, snow and ice extent
+- **Disaster response and attribution**: flood extent, burn scars, drought monitoring
 
 ## A warning that carries over from the last unit
 
 Remote sensing data is the clearest case of everything covered in **Model Evaluation and
-Validation**. Pixels are strongly spatially autocorrelated — adjacent pixels usually belong to
+Validation**. Pixels are strongly spatially autocorrelated, adjacent pixels usually belong to
 the same land cover patch and often to the same physical object. A random train/test split over
 pixels puts a pixel's immediate neighbors into the training set, and the model scores well by
 recognizing that specific patch rather than by learning what vegetation looks like.
