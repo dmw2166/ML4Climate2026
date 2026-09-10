@@ -73,12 +73,6 @@ Bring your dataset choice to office hours early if you are unsure whether it wil
 6. **Limitations.** What would you need to trust this result: more data, different data, a
    different method? What are the practical or ethical considerations if someone acted on it?
 
-```{admonition} Negative results are fine
-:class: tip
-A negative result, obtained with sound methods and clearly explained, receives full credit. If your model
-cannot beat persistence, that is a finding. Report it.
-```
-
 ### Deliverables
 
 - **Code**: a GitHub repository with your notebook(s) and a README that lets someone reproduce
