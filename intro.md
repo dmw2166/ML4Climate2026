@@ -111,7 +111,7 @@ Large Language Models (LLMs) such as ChatGPT, Google Gemini, Claude, etc., are r
 
 ```{admonition} Important!
 :class: warning
-Do not install any AI tool coding companion (e.g. Claude Code) directly onto our course server, chopin Not only is this over-reliance on AI, it will degrade the computing experience for others in the class by hogging memory and CPU time. Also do not upload course materials directly to AI tools
+Do not install any AI tool coding companion (e.g. Claude Code) directly onto our course server, chopin. Not only is this over-reliance on AI, it will degrade the computing experience for others in the class by hogging memory and CPU time. Also do not upload course materials directly to AI tools.
 ```
 
 **How to use it, Socratic mode.** Default to asking the AI to *teach* you, not to *do it for you*. At the start of a working session, prime your chat with a tutor prompt. Here is an example. Feel free to adapt it as you learn what works:
