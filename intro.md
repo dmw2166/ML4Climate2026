@@ -46,7 +46,7 @@ you have learned to answer that question.
 ### Choosing a dataset
 
 Pick something real. It should be observational, model, or remote sensing data with genuine
-environmental relevance and not a cleaned teaching dataset with a known answer.
+climate relevance and not a cleaned teaching dataset with a known answer.
 
 **You are encouraged to use data from your own research.** If you have a dataset you already
 care about, this is a good excuse to try these methods on it.
@@ -107,7 +107,7 @@ cannot beat persistence, that is a finding. Report it.
 
 ## Using AI in This Course
 
-Large Language Models (LLMs) such as ChatGPT, Google Gemini, Claude, etc., are rapidly changing norms in higher education. Some of what these tools provide can be useful and helpful, but overreliance on LLMs is a risk. Asking an LLM to do an assignment for you will do you a major disservice in your future career, as you will not be learning and acquiring the skills needed to succeed in a career in climate. Additionally, the LLMs are prone to mistakes. Use of LLMs is allowed in this class; however, you must cite your use of it in your assignments. You may use whichever one you like, but note that Google Gemini is available for free to Columbia students: [https://www.cuit.columbia.edu/content/google-gemini]. An example of acceptable use citation might look like “Used Claude Fable 5 to look up syntax for creating a filled contour plot”. Unacceptable use would be copying and pasting code that you can’t explain. You are responsible for understanding and being able to explain your work.  The instructor and/or TAs reserve the right to ask you questions about your assignment if they suspect over-reliance on LLMs. If you are not understanding the code or material, that is a sign to revisit the material, ask questions, go to office hours, etc., and not to rely further on LLMs. 
+Large Language Models (LLMs) such as ChatGPT, Google Gemini, Claude, etc., are rapidly changing norms in higher education. Some of what these tools provide can be useful and helpful, but overreliance on LLMs is a risk. Asking an LLM to do an assignment for you will do you a major disservice in your future career, as you will not be learning and acquiring the skills needed to succeed in a career in climate. Additionally, the LLMs are prone to mistakes. Use of LLMs is allowed in this class; however, you must cite your use of it in your assignments. Google Gemini is available for free to Columbia students and has a security and privacy policy that has been vetted and approved by the university: https://www.cuit.columbia.edu/content/google-gemini. An example of acceptable use citation might look like “Used Google Gemini to look up syntax for creating a filled contour plot”.  Unacceptable use would be copying and pasting code that you can’t explain. You are responsible for understanding and being able to explain your work.  The instructor and/or TAs reserve the right to ask you questions about your assignment if they suspect over-reliance on LLMs. If you are not understanding the code or material, that is a sign to revisit the material, ask questions, go to office hours, etc., and not to rely further on LLMs. 
 
 **How to use it, Socratic mode.** Default to asking the AI to *teach* you, not to *do it for you*. At the start of a working session, prime your chat with a tutor prompt. Here is an example. Feel free to adapt it as you learn what works:
 
@@ -124,6 +124,8 @@ Rules:
 The goal is to use AI to build understanding, not to paste solutions you can't explain.
 
 **Important! Do not install any AI tool coding companion (e.g. Claude Code) directly onto our course server, chopin!** Not only is this over-reliance on AI, it will degrade the computing experience for others in the class by hogging memory and CPU time.
+
+**Important! Do not upload course materials directly to AI tools**
 
 **What AI is good at, and what it isn't.** Chat-based AI is genuinely useful for explaining error messages, suggesting matplotlib syntax, walking through an unfamiliar library API, or summarizing what a function does. It is less reliable for judging whether your scientific result is correct, picking the right analysis for *your* data, catching subtle bugs in numerical or coordinate-system code, or knowing what "looks right" for a specific geophysical field. Treat AI as a fast, broadly-read but inexperienced collaborator, useful for the syntax layer, not a substitute for your own scientific judgment.
 
