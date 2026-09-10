@@ -203,7 +203,7 @@ zero (0.814 train vs 0.817 test — the model is equally mediocre on both). By d
 **0.117**: a perfect 1.000 on training data and 0.883 on data it has not seen. Everything the tree
 learned after depth ~2 was **noise in the training set**, not signal it could carry to new data.
 
-:::{admonition} Be honest about the size of the effect
+:::{admonition} Keep the size of the effect in proportion
 :class: warning
 It is tempting to describe this as "test accuracy peaks and then collapses". It does not. Test
 accuracy peaks at **depth 2** (0.908) and ends at **0.883** — a sag of only about 2.5 percentage

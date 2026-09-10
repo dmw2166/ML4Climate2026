@@ -343,7 +343,7 @@ against number of clusters K (horizontal, 1 to 9). It plunges from about 7500 at
 region around K=4 reading "somewhere around here?" — deliberately non-committal, because the
 bend is gradual rather than sharp.
 
-The printed table of drops above is the honest way to read this curve.
+The printed table of drops above is the reliable way to read this curve.
 :::
 
 The inertia has an elbow, but **it is not always enough to objectively choose $K$**.

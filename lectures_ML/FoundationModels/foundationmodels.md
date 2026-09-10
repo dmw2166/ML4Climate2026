@@ -11,7 +11,7 @@ have gone from research curiosities to systems that compete with (and on some me
 inference cost.
 
 This unit covers what these models are, what changed to make them work, and how to
-evaluate them honestly.
+evaluate them.
 
 ## Planned topics
 

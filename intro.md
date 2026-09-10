@@ -75,7 +75,7 @@ Bring your dataset choice to office hours early if you are unsure whether it wil
 
 ```{admonition} Negative results are fine
 :class: tip
-A negative result, honestly obtained and clearly explained, receives full credit. If your model
+A negative result, obtained with sound methods and clearly explained, receives full credit. If your model
 cannot beat persistence, that is a finding. Report it.
 ```
 
@@ -100,7 +100,7 @@ cannot beat persistence, that is a finding. Report it.
 | --- | --- |
 | Question and dataset: well-posed, appropriate, genuinely used | 15% |
 | Methods: sound choices, correctly implemented | 25% |
-| Validation and baselines: honest, justified, correctly applied | 25% |
+| Validation and baselines: appropriate, justified, correctly applied | 25% |
 | Interpretation and limitations: critical, physically grounded | 20% |
 | Communication: paper and presentation | 15% |
 

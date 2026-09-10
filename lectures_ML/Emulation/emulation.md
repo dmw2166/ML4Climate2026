@@ -105,7 +105,7 @@ anything about their own confidence.
 fixable. An emulator has seen the simulator's behaviour only in the region the ensemble covered.
 Asked about a forcing pathway or a parameter combination outside that region, it will still return
 a confident-looking number, produced by whatever its functional form happens to do out there. The
-ClimateBench design confronts this honestly by testing on a **held-out scenario**: train on
+ClimateBench design confronts this directly by testing on a **held-out scenario**: train on
 `historical`, `ssp126`, `ssp370`, `ssp585` and the single-forcing runs, then predict `ssp245`,
 which the emulator has never seen. That is a real generalization test, and it is much harder than
 a random split over years.
@@ -123,6 +123,6 @@ will smoothly interpolate straight through the discontinuity.
 parameterizations and the emulator is quietly describing a model that no longer exists, with no
 error to signal it.
 
-The honest summary: an emulator is an interpolator over a designed ensemble. Used inside its
+In short: an emulator is an interpolator over a designed ensemble. Used inside its
 design it is enormously powerful and can replace thousands of core-hours. Used outside it, it
 fails in the most dangerous way available, confidently, and without complaint.

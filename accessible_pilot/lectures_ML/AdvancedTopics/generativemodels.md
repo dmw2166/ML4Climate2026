@@ -69,7 +69,7 @@ Machine learning distinguishes two sources of uncertainty (Abdar et al. 2021):
 
 The distinction matters because the two call for different remedies: a
 generative model can learn to *represent* the aleatoric spread, but only more
-observations (or an honest admission of ignorance) address the epistemic part.
+observations (or an explicit admission of ignorance) address the epistemic part.
 The toy example below makes both visible.
 
 ```python
@@ -256,7 +256,7 @@ the spread claims. The final point breaks the trend, dropping back down to
 :::
 
 Through most of the range, bins with larger spread have larger error: spread is
-doing its job as a predictor of error. Two honest caveats are visible too.
+doing its job as a predictor of error. Two caveats are visible too.
 First, every bin sits *above* the one-to-one line, meaning the error is
 consistently larger than the spread claims: the ensemble is under-dispersive,
 or overconfident, a very common finding for deep ensembles, whose members

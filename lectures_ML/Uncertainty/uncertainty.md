@@ -1,7 +1,7 @@
 # Uncertainty Quantification
 
 Every model output is uncertain. In climate science that uncertainty is not a footnote; it is
-often the result. A projection without an honest error estimate cannot support a decision, and a
+often the result. A projection without a credible error estimate cannot support a decision, and a
 confident wrong answer is worse than an uncertain right one.
 
 The previous unit asked whether a model is any good. This one asks a harder question: **how wrong
@@ -22,8 +22,7 @@ data. It is largest where the training data is sparse or absent, and (crucially)
 reducible**: collect more data in that region and it shrinks.
 
 The practical reason to separate them is that they call for different responses. High aleatoric
-uncertainty means you have reached the limit of what is predictable and should report that
-honestly. High epistemic uncertainty means you should go and collect more data, or restrict the
+uncertainty means you have reached the limit of what is predictable and should report that. High epistemic uncertainty means you should go and collect more data, or restrict the
 model's domain of application.
 
 They also behave differently under extrapolation, which is where this matters most for us. In
@@ -147,7 +146,7 @@ The guarantee rests on one assumption: that the calibration data and the new dat
 autocorrelated, non-stationary environmental data tends to violate, so conformal methods for
 time series need blocked or time-aware variants. The guarantee is real, but it is not free.
 
-## Reporting uncertainty honestly
+## Reporting uncertainty
 
 Three failure modes, all common in published environmental work:
 
@@ -172,5 +171,5 @@ useful sentence in the report.
 A closing point specific to this field. Where a model's uncertainty is *largest* is frequently
 where the stakes are *highest*: the extreme events, the unprecedented conditions, the regions
 with no monitoring. The rare cases are rare in the training data too, so the model knows least
-about exactly what we most need to know. Any honest treatment of uncertainty in climate
+about exactly what we most need to know. Any serious treatment of uncertainty in climate
 applications has to lead with that, rather than treating it as a caveat at the end.
