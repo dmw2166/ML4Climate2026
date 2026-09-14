@@ -110,7 +110,7 @@ ClimateBench design confronts this directly by testing on a **held-out scenario*
 which the emulator has never seen. That is a real generalization test, and it is much harder than
 a random split over years.
 
-This connects directly to the point made in Assignment 1: extrapolation is a different problem
+This connects directly to the point made in Assignment 2: extrapolation is a different problem
 from interpolation, and data-driven methods are far weaker at it. For emulation the stakes are
 specific: the scenarios policymakers most want costed are often the ones furthest from what has
 been simulated.

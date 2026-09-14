@@ -1,6 +1,7 @@
 # Python review: arrays, dataframes, and plots
 
-This page is a refresher on the handful of operations Assignment 1 actually uses. It is
+This page is a refresher on the handful of operations the optional coding review in
+Assignment 1 uses, and that every later assignment takes for granted. It is
 deliberately short and is not a general Python tutorial. If you want one,
 [Computing and Research Methods for Climate Data Science](https://dmw2166.github.io/comp-res-climate-data-sci/intro.html) covers this ground much more thoroughly, and its
 [NumPy and matplotlib lecture](https://dmw2166.github.io/comp-res-climate-data-sci/lectures/basic_scipy/numpy_and_matplotlib.html) maps
