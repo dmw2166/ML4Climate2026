@@ -29,7 +29,7 @@ We meet **Mondays 4:10 - 6:40** at the Forum. Most classes will include at least
 Your grade in this course is based on:
 
 - **50%**: coding assignments
-- **40%**: final project and presentation
+- **40%**: final project (paper and code)
 - **10%**: attendance and participation
 
 
@@ -84,14 +84,14 @@ cannot beat persistence, that is a finding. Report it.
 - **Code**: a GitHub repository with your notebook(s) and a README that lets someone reproduce
   your work
 - **Paper**: 5 pages, excluding figures and references
-- **Presentation**: 10 minutes plus questions, in class on December 14
+
+There is no in-class presentation. The paper and the repository are the whole submission.
 
 ### Timeline
 
 | Milestone | Date |
 | --- | --- |
 | Topic proposal (one paragraph: dataset, question, method) | Monday, November 9 |
-| In-class presentations | Monday, December 14 |
 | Paper and code due | Monday, December 21 |
 
 ### Grading
@@ -102,7 +102,7 @@ cannot beat persistence, that is a finding. Report it.
 | Methods: sound choices, correctly implemented | 25% |
 | Validation and baselines: appropriate, justified, correctly applied | 25% |
 | Interpretation and limitations: critical, physically grounded | 20% |
-| Communication: paper and presentation | 15% |
+| Communication: clarity of the paper, its figures, and the README | 15% |
 
 
 ## Using AI in This Course

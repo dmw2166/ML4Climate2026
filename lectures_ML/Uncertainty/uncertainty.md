@@ -26,7 +26,7 @@ uncertainty means you have reached the limit of what is predictable and should r
 model's domain of application.
 
 They also behave differently under extrapolation, which is where this matters most for us. In
-Assignment 1 you fit a straight line to the Mauna Loa CO$_2$ record and extrapolate it forward;
+Assignment 2 you fit a straight line to the Mauna Loa CO$_2$ record and extrapolate it forward;
 the error grows steadily the further you go. That growth is epistemic: the model has left the
 region the data constrained. A model that reports *constant* uncertainty when extrapolating is
 not reporting uncertainty at all.
