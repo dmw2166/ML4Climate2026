@@ -30,7 +30,6 @@ parts:
     - file: lectures_ML/Introduction/ML-for-climate-env
     - file: lectures_ML/Introduction/computing-environment
     - file: lectures_ML/Introduction/python-review
-    - file: tutorials/week1-python-tutorial
     - file: assignments/Assignment1
 
   - caption: "Week 2 — Data Preprocessing"
@@ -44,8 +43,7 @@ parts:
     - file: lectures_ML/SupervisedML/supervisedml
     - file: lectures_ML/SupervisedML/classification
     - file: lectures_ML/SupervisedML/regression
-    - file: tutorials/week3-supervised-tutorial
-    - file: assignments/Assignment3
+    - file: assignments/Assignment3          # stub
 
   - caption: "Week 4 — Supervised Learning: Decision Trees"
     chapters:
