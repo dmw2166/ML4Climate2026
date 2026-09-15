@@ -8,8 +8,8 @@ root: intro
 # STRUCTURE
 # ---------------------------------------------------------------------------
 # Parts mirror the course schedule in the syllabus (CLMT5120, Fall 2026), one
-# part per teaching week. Week 8 is fall break and Week 14 is final project
-# presentations, so neither has a part here.
+# part per teaching week. Week 8 is fall break and Week 14 is the last class
+# with no new material, so neither has a part here.
 #
 # Assignments follow the syllabus convention: the assignment listed under a
 # week is DUE the Monday of the following week and covers that week's material.
@@ -111,4 +111,4 @@ parts:
     chapters:
     - file: lectures_ML/Ethics/ethics                       # stub
 
-  # Week 14, December 14 -- final project presentations, no reading.
+  # Week 14, December 14 -- last class, no reading.
