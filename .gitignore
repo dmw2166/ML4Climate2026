@@ -35,3 +35,6 @@ Solutions/
 # ClimateBench data for the emulation tutorial (~900 MB, fetched from Zenodo
 # 10.5281/zenodo.7064308 by the notebook's first cell). Too big for git.
 climatebench_data/
+
+# Line-by-line annotated copies of the tutorials, generated locally for teaching. Not tracked.
+tutorials_annotated/

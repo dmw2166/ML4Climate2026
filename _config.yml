@@ -19,6 +19,8 @@ exclude_patterns:
   - tutorials/week05-validation-tutorial.ipynb
   - tutorials/week07-clustering-tutorial.ipynb
   - tutorials/week13-carbon-cost-tutorial.ipynb
+  # Local, gitignored annotated copies of the tutorials; never part of the site.
+  - tutorials_annotated
   # Zoom class transcripts are kept local (gitignored); don't build them as pages.
   - "**/*Transcript.md"
 
