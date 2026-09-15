@@ -8,9 +8,7 @@ concentrations of CO₂ and CH₄. First we build a **dense neural network (NN)*
 predicts temperature everywhere on Earth as one long vector; then we build a
 **convolutional neural network (CNN)** that predicts the temperature **map** directly,
 keeping its spatial structure. It is based on notebooks by Weiwei Zhan and Francesco
-Immorlano developed for a [LEAP](https://leap.columbia.edu/) bootcamp
-([NN example](https://github.com/leap-stc/LEAP-bootcamps/blob/main/Codes/Day2/Neural_Network_example.ipynb),
-[CNN example](https://github.com/leap-stc/LEAP-bootcamps/blob/main/Codes/Day2/CNN_example.ipynb)).
+Immorlano.
 
 :::{admonition} How to use this page (accessible version)
 :class: important
@@ -19,10 +17,8 @@ On the standard site this is a Jupyter notebook. Here the code is laid out as a
 workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/computing_env/accessible_setup.html).
 Unlike the [ANN tutorial](ann_tutorial.md), this one **cannot run on an arbitrary
 laptop**: it reads the **ClimateBench** data from a Google Cloud Storage bucket
-(`gs://leap-persistent/...`) and trains with **TensorFlow**, so it is meant to be run
-on the **[LEAP JupyterHub](https://leap.columbia.edu/)** (choose the *TensorFlow*
-server image), where both the data and the deep-learning libraries are already
-available. There are no images to view: every figure is **described** in a "What the
+and trains with **TensorFlow**, so it is meant to be run on the **class JupyterHub**,
+where both the data and the deep-learning libraries are already available. There are no images to view: every figure is **described** in a "What the
 plot shows" block and backed by the **printed numbers** (array shapes, parameter
 counts) you can read. Any plot can also be rendered with
 [MAIDR](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/sci_python/trying_maidr.html).

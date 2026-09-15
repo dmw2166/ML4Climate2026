@@ -51,7 +51,7 @@ climate relevance and not a cleaned teaching dataset with a known answer.
 **You are encouraged to use data from your own research.** If you have a dataset you already
 care about, this is a good excuse to try these methods on it.
 
-Some starting points: ERA5 reanalysis (Copernicus), CMIP6 output (ESGF or the LEAP catalogs),
+Some starting points: ERA5 reanalysis (Copernicus), CMIP6 output (ESGF or the Pangeo cloud catalog),
 NOAA GHCN station records and OISST, EPA AQS or OpenAQ for air quality, Sentinel-2 and Landsat
 imagery via the Planetary Computer, CAMELS for hydrology, ClimateBench for emulation.
 

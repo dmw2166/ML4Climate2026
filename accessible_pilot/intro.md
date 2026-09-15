@@ -31,7 +31,7 @@ applies unchanged here. **Do these first** if you haven't already:
 - **[Setting up an accessible
   workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/computing_env/accessible_setup.html)**
   — VS Code + NVDA + a screen-reader-readable terminal, and connecting to the
-  LEAP hub.
+  class hub.
 - **[Reading Python out
   loud](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/core_python/reading_python_out_loud.html)**
   — how code, indentation, and symbols sound with a screen reader.
@@ -70,7 +70,7 @@ By the end of this course, you will:
 This accessible version is a pilot. If you hit a page that isn't usable with
 your screen reader, contact the instructor and Columbia's Disability Services so
 we can fix it. Setup steps that need a one-time sighted hand (installing
-software, the LEAP hub access token) can be done with the course assistant or
+software, the class hub login) can be done with the course assistant or
 Disability Services.
 
 ## Where to start

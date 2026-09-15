@@ -46,9 +46,8 @@ workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/compu
 Like the [CNN tutorial](cnn_tutorial.md), this one **cannot run on an
 arbitrary laptop**: it reads the CAMELS data from a requester-pays Google
 Cloud Storage bucket (via `gcsfs`) and trains with **TensorFlow**, so it is
-meant to be run on a cloud platform such as the **[LEAP
-JupyterHub](https://leap.columbia.edu/)** (choose the *TensorFlow* server
-image), where training is much faster on a GPU. Every figure is **described**
+meant to be run on the **class JupyterHub**, where training is much faster
+on a GPU. Every figure is **described**
 in a "What the plot shows" block and backed by **printed numbers** (shapes,
 parameter counts, losses) you can read. Any plot can also be rendered with
 [MAIDR](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/sci_python/trying_maidr.html).
@@ -281,7 +280,7 @@ shape `(365, 5)`.
 However, the time series is currently one long matrix (days by features). We
 need to slide over it and cut out short samples. Keras ships
 `tf.keras.utils.timeseries_dataset_from_array` for exactly this, but it fails
-on the TensorFlow build in the LEAP image, so we use a short NumPy helper
+on some TensorFlow builds, so we use a short NumPy helper
 instead — it takes the same arguments and returns the same
 `(inputs, targets)` batches. Here it is on a toy series:
 
