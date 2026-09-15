@@ -28,7 +28,5 @@ Typically, we will devote at least 80% of the time we spend on a machine learnin
 data set is prepared, we can then try out (or benchmark) a number of different algorithms. Data preprocessing refers to analyzing, filtering, transforming,
 and encoding data such that it is ready to pass to the machine learning algorithm.
 
-Next, we will work through a tutorial on data preprocessing. This will use the class GitHub repo. If you need reminders about how to access and download
-files to LEAP JupyterHub or Google Colab, you can refresh yourself here:
-[Intro to Git](https://dmw2166.github.io/comp-res-climate-data-sci/lectures/environment/intro_to_git.html).
+Next, we will work through a tutorial on data preprocessing. 
 
