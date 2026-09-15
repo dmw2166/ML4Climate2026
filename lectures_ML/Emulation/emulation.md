@@ -34,7 +34,7 @@ The word covers two related but distinct problems, and it is worth being explici
 you are solving, because the design choices differ.
 
 **Parameter emulation.** The inputs are the simulator's own tunable parameters (cloud, convection and microphysics settings) and the output is the climate the model produces. This is
-what you build in the [ANN tutorial](../DeepLearning/ann_tutorial.ipynb) in Week 9, using
+what you build in the [ANN tutorial](../../tutorials/week09-ann_tutorial.ipynb) in Week 9, using
 perturbed parameter ensembles. The purpose is usually **model tuning or calibration**: search the
 parameter space cheaply to find settings that best match observations, which is impossible to do
 by brute force when each evaluation costs a supercomputer allocation.
@@ -79,7 +79,7 @@ Three approaches, in rough order of sophistication:
   incoherent fields. The ClimateBench random forest baseline works essentially this way, by
   stacking latitude and longitude into a multi-output target.
 - **Reduce, then emulate.** Compress the field with PCA (the technique from
-  [Week 6](../UnsupervisedML/PCA.ipynb)), emulate the handful of principal component
+  [Week 6](../../tutorials/week06-PCA.ipynb)), emulate the handful of principal component
   coefficients, then project back. This exploits the fact that climate fields have far fewer
   degrees of freedom than grid cells, the same insight that made EOF analysis useful in
   Assignment 6.

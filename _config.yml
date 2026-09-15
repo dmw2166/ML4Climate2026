@@ -12,8 +12,10 @@ exclude_patterns:
   - accessible_pilot
   # Solution keys — local only, never published. Also gitignored.
   - solutions
-  # In-class live-coding notebooks. Tracked in git, not built into the site.
-  - tutorials
+  # In-class live-coding notebooks (Weeks 1 and 3) are tracked but not published;
+  # the other tutorials/ notebooks are site pages listed in _toc.yml.
+  - tutorials/week01-python-tutorial.ipynb
+  - tutorials/week03-supervised-tutorial.ipynb
   # Zoom class transcripts are kept local (gitignored); don't build them as pages.
   - "**/*Transcript.md"
 
@@ -30,16 +32,16 @@ execute:
   #    xarray + a live NOAA THREDDS connection); ships its saved outputs instead
   #  - assignments/*: student templates with empty answer cells (would NameError)
   exclude_patterns:
-    - "**/datapreparation.ipynb"
-    - "**/randomforests.ipynb"
-    - "**/PCA.ipynb"
-    - "**/ann_tutorial.ipynb"   # needs tensorflow + downloads the PPE data from Zenodo; ships saved outputs
-    - "**/cnn_tutorial.ipynb"   # needs tensorflow + reads ClimateBench data from a gs:// bucket; ships saved outputs
-    - "**/rnn_tutorial.ipynb"   # needs tensorflow + gcsfs (requester-pays CAMELS bucket); ships saved outputs
+    - "**/*datapreparation.ipynb"
+    - "**/*randomforests.ipynb"
+    - "**/*PCA.ipynb"
+    - "**/*ann_tutorial.ipynb"   # needs tensorflow + downloads the PPE data from Zenodo; ships saved outputs
+    - "**/*cnn_tutorial.ipynb"   # needs tensorflow + reads ClimateBench data from a gs:// bucket; ships saved outputs
+    - "**/*rnn_tutorial.ipynb"   # needs tensorflow + gcsfs (requester-pays CAMELS bucket); ships saved outputs
     - "**/physicsai.ipynb"      # needs tensorflow + trains 4 networks (~5 min); ships saved outputs
-    - "**/emulation_tutorial.ipynb"   # downloads ~900 MB of ClimateBench from Zenodo;
+    - "**/*emulation_tutorial.ipynb"   # downloads ~900 MB of ClimateBench from Zenodo;
                                       # ships saved outputs
-    - "**/generative_tutorial.ipynb"  # needs tensorflow + a 900 MB Zenodo download, and trains a
+    - "**/*generative_tutorial.ipynb"  # needs tensorflow + a 900 MB Zenodo download, and trains a
                                       # VAE, a GAN and a diffusion model (~10 min); ships saved outputs
     - "assignments/*.ipynb"
 

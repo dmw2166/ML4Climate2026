@@ -35,7 +35,7 @@ parts:
   - caption: "Week 2 — Data Preprocessing"
     chapters:
     - file: lectures_ML/DataPreprocessing/datapreprocessing
-    - file: lectures_ML/DataPreprocessing/datapreparation
+    - file: tutorials/week02-datapreparation
     - file: assignments/Assignment2
 
   - caption: "Week 3 — Supervised Learning: Classification and Regression"
@@ -48,7 +48,7 @@ parts:
   - caption: "Week 4 — Supervised Learning: Decision Trees"
     chapters:
     - file: lectures_ML/SupervisedML/treesforests
-    - file: lectures_ML/SupervisedML/randomforests
+    - file: tutorials/week04-randomforests
     - file: assignments/Assignment4
 
   - caption: "Week 5 — Model Evaluation and Validation"
@@ -62,7 +62,7 @@ parts:
     chapters:
     - file: lectures_ML/UnsupervisedML/unsupervisedML
     - file: lectures_ML/UnsupervisedML/dimensionalityreduction
-    - file: lectures_ML/UnsupervisedML/PCA
+    - file: tutorials/week06-PCA
     - file: assignments/Assignment6          # stub
 
   - caption: "Week 7 — Unsupervised Learning: Clustering"
@@ -75,15 +75,15 @@ parts:
   - caption: "Week 9 — Deep Learning: Artificial Neural Networks"
     chapters:
     - file: lectures_ML/DeepLearning/ann
-    - file: lectures_ML/DeepLearning/ann_tutorial
+    - file: tutorials/week09-ann_tutorial
     - file: assignments/Assignment8
 
   - caption: "Week 10 — Deep Learning: Convolutional and Recurrent Networks"
     chapters:
     - file: lectures_ML/DeepLearning/cnn
-    - file: lectures_ML/DeepLearning/cnn_tutorial
+    - file: tutorials/week10-cnn_tutorial
     - file: lectures_ML/DeepLearning/rnn
-    - file: lectures_ML/DeepLearning/rnn_tutorial
+    - file: tutorials/week10-rnn_tutorial
     # Remote sensing folded in here: it is the canonical CNN application.
     - file: lectures_ML/RemoteSensing/remotesensing
     - file: lectures_ML/RemoteSensing/landcover_classification
@@ -95,14 +95,14 @@ parts:
     - file: lectures_ML/AdvancedTopics/generativemodels
     - file: lectures_ML/AdvancedTopics/vaes
     - file: lectures_ML/AdvancedTopics/gansdiffusion
-    - file: lectures_ML/AdvancedTopics/generative_tutorial
+    - file: tutorials/week11-generative_tutorial
     - file: assignments/Assignment10         # stub
 
   - caption: "Week 12 — Advanced Topics: Foundation Models for Climate"
     chapters:
     - file: lectures_ML/FoundationModels/foundationmodels   # stub
     - file: lectures_ML/Emulation/emulation
-    - file: lectures_ML/Emulation/emulation_tutorial
+    - file: tutorials/week12-emulation_tutorial
     - file: lectures_ML/Applications/forecasting            # stub
     - file: lectures_ML/AdvancedTopics/physicsai
     # No assignment -- syllabus lists none for weeks 12-14.
