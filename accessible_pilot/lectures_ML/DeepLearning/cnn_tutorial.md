@@ -15,10 +15,10 @@ Immorlano.
 On the standard site this is a Jupyter notebook. Here the code is laid out as a
 **Python script** you read top to bottom — see [Setting up an accessible
 workflow](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/computing_env/accessible_setup.html).
-Unlike the [ANN tutorial](ann_tutorial.md), this one **cannot run on an arbitrary
-laptop**: it reads the **ClimateBench** data from a Google Cloud Storage bucket
-and trains with **TensorFlow**, so it is meant to be run on the **class JupyterHub**,
-where both the data and the deep-learning libraries are already available. There are no images to view: every figure is **described** in a "What the
+Unlike the [ANN tutorial](ann_tutorial.md), this one is heavier: the first run
+downloads about 900 MB of **ClimateBench** data from Zenodo, and training uses
+**TensorFlow**, so it is best run on the **class JupyterHub**, where the
+deep-learning libraries are installed and the download is fast. There are no images to view: every figure is **described** in a "What the
 plot shows" block and backed by the **printed numbers** (array shapes, parameter
 counts) you can read. Any plot can also be rendered with
 [MAIDR](https://earth-ds-ml.github.io/summer_2026/accessible/lectures_DS/sci_python/trying_maidr.html).
@@ -29,6 +29,8 @@ Put these imports and paths at the top of your script.
 
 ```python
 import os
+import tarfile
+import urllib.request
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -42,8 +44,28 @@ from tensorflow.keras.layers import *
 from tensorflow.keras import Sequential
 
 cwd = os.getcwd()
-train_path = "gs://leap-persistent/jbusecke/data/climatebench/train_val/"
-test_path  = "gs://leap-persistent/jbusecke/data/climatebench/test/"
+
+# ClimateBench is on Zenodo (10.5281/zenodo.7064308) under CC-BY-4.0. The training and
+# test archives together are about 900 MB, so this takes a few minutes the first time.
+# The files are cached in climatebench_data/ and reused afterwards. The Week 12
+# emulation tutorial reads from the same folder.
+DATA = "climatebench_data"
+ZENODO = "https://zenodo.org/api/records/7064308/files"
+
+os.makedirs(DATA, exist_ok=True)
+for name, marker in [("train_val.tar.gz", "inputs_historical.nc"), ("test.tar.gz", "inputs_ssp245.nc")]:
+    path = os.path.join(DATA, name)
+    if not os.path.exists(path) and not os.path.exists(os.path.join(DATA, marker)):
+        print(f"downloading {name} ...")
+        urllib.request.urlretrieve(f"{ZENODO}/{name}/content", path)
+    if os.path.exists(path):
+        with tarfile.open(path) as t:
+            t.extractall(DATA)
+        os.remove(path)
+
+# Both archives extract into the same folder, so the training and test paths coincide.
+train_path = DATA + "/"
+test_path  = DATA + "/"
 ```
 
 ## The ClimateBench data
@@ -57,12 +79,8 @@ maps (`tas`) on a 96 (latitude) × 144 (longitude) grid.
 
 ```python
 def open_dataset(file_path):
-    """Open a ClimateBench file. For a gs:// url, read the matching .zarr store."""
-    if 'gs://' in file_path:
-        return xr.open_dataset(f"{file_path}.zarr", engine='zarr')
-    ds = xr.open_dataset(f"{file_path}.nc")
-    ds.attrs['file_name']
-    return ds
+    """Open one ClimateBench NetCDF file. `file_path` is given without the .nc extension."""
+    return xr.open_dataset(f"{file_path}.nc")
 
 scenarios = ['historical', 'ssp126', 'ssp370', 'ssp585']
 inputs  = [os.path.join(train_path, f"inputs_{s}")  for s in scenarios]
