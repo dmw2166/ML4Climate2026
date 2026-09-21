@@ -43,7 +43,7 @@ parts:
     - file: lectures_ML/SupervisedML/supervisedml
     - file: lectures_ML/SupervisedML/classification
     - file: lectures_ML/SupervisedML/regression
-    - file: assignments/Assignment3          # stub
+    - file: assignments/Assignment3
 
   - caption: "Week 4 — Supervised Learning: Decision Trees"
     chapters:
