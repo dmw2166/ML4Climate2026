@@ -8,18 +8,20 @@ root: intro
 # STRUCTURE
 # ---------------------------------------------------------------------------
 # Parts mirror the course schedule in the syllabus (CLMT5120, Fall 2026), one
-# part per teaching week. Week 8 is fall break and Week 14 is the last class
-# with no new material, so neither has a part here.
+# part per teaching week. Data preprocessing spans Weeks 2 and 3 and is one
+# part. Week 8 is fall break and Week 14 is the last class with no new
+# material, so neither has a part here. The schedule was pushed back one week
+# in late September 2026 and the ethics and policy week was dropped to make room.
 #
 # Assignments follow the syllabus convention: the assignment listed under a
 # week is DUE the Monday of the following week and covers that week's material.
-# Weeks 12-14 carry no assignment.
+# Weeks 3, 13, and 14 carry no assignment.
 #
 # Three units are not on the syllabus as separate weeks and have been folded
 # into the closest one:
-#   - uncertainty            -> Week 5 (model evaluation)
-#   - remote sensing (x3)    -> Week 10 (CNNs; its natural application)
-#   - physicsai              -> Week 12 (advanced topics)
+#   - uncertainty            -> Week 6 (model evaluation)
+#   - remote sensing (x3)    -> Week 11 (CNNs; its natural application)
+#   - physicsai              -> Week 13 (advanced topics)
 #
 # Pages marked below as stubs are placeholders awaiting real content.
 # ---------------------------------------------------------------------------
@@ -32,83 +34,79 @@ parts:
     - file: lectures_ML/Introduction/python-review
     - file: assignments/Assignment1
 
-  - caption: "Week 2 — Data Preprocessing"
+  - caption: "Weeks 2 and 3 — Data Preprocessing"
     chapters:
     - file: lectures_ML/DataPreprocessing/datapreprocessing
     - file: tutorials/week02-datapreparation
     - file: assignments/Assignment2
 
-  - caption: "Week 3 — Supervised Learning: Classification and Regression"
+  - caption: "Week 4 — Supervised Learning: Classification and Regression"
     chapters:
     - file: lectures_ML/SupervisedML/supervisedml
     - file: lectures_ML/SupervisedML/classification
     - file: lectures_ML/SupervisedML/regression
     - file: assignments/Assignment3
 
-  - caption: "Week 4 — Supervised Learning: Decision Trees"
+  - caption: "Week 5 — Supervised Learning: Decision Trees"
     chapters:
     - file: lectures_ML/SupervisedML/treesforests
-    - file: tutorials/week04-randomforests
+    - file: tutorials/week05-randomforests
     - file: assignments/Assignment4
 
-  - caption: "Week 5 — Model Evaluation and Validation"
+  - caption: "Week 6 — Model Evaluation and Validation"
     chapters:
     - file: lectures_ML/ModelEvaluation/modelevaluation
     - file: lectures_ML/ModelEvaluation/validation
     - file: lectures_ML/Uncertainty/uncertainty     # folded in from off-schedule
     - file: assignments/Assignment5          # stub
 
-  - caption: "Week 6 — Unsupervised Learning: Dimensionality Reduction"
+  - caption: "Week 7 — Unsupervised Learning: Dimensionality Reduction"
     chapters:
     - file: lectures_ML/UnsupervisedML/unsupervisedML
     - file: lectures_ML/UnsupervisedML/dimensionalityreduction
-    - file: tutorials/week06-PCA
+    - file: tutorials/week07-PCA
     - file: assignments/Assignment6          # stub
 
-  - caption: "Week 7 — Unsupervised Learning: Clustering"
+  # Week 8, November 2 -- FALL BREAK, no class.
+
+  - caption: "Week 9 — Unsupervised Learning: Clustering"
     chapters:
     - file: lectures_ML/UnsupervisedML/clustering
     - file: assignments/Assignment7
 
-  # Week 8, November 2 -- FALL BREAK, no class.
-
-  - caption: "Week 9 — Deep Learning: Artificial Neural Networks"
+  - caption: "Week 10 — Deep Learning: Artificial Neural Networks"
     chapters:
     - file: lectures_ML/DeepLearning/ann
-    - file: tutorials/week09-ann_tutorial
+    - file: tutorials/week10-ann_tutorial
     - file: assignments/Assignment8
 
-  - caption: "Week 10 — Deep Learning: Convolutional and Recurrent Networks"
+  - caption: "Week 11 — Deep Learning: Convolutional and Recurrent Networks"
     chapters:
     - file: lectures_ML/DeepLearning/cnn
-    - file: tutorials/week10-cnn_tutorial
+    - file: tutorials/week11-cnn_tutorial
     - file: lectures_ML/DeepLearning/rnn
-    - file: tutorials/week10-rnn_tutorial
+    - file: tutorials/week11-rnn_tutorial
     # Remote sensing folded in here: it is the canonical CNN application.
     - file: lectures_ML/RemoteSensing/remotesensing
     - file: lectures_ML/RemoteSensing/landcover_classification
     - file: lectures_ML/RemoteSensing/plume_detection
     - file: assignments/Assignment9          # stub
 
-  - caption: "Week 11 — Deep Learning: Generative Models"
+  - caption: "Week 12 — Deep Learning: Generative Models"
     chapters:
     - file: lectures_ML/AdvancedTopics/generativemodels
     - file: lectures_ML/AdvancedTopics/vaes
     - file: lectures_ML/AdvancedTopics/gansdiffusion
-    - file: tutorials/week11-generative_tutorial
+    - file: tutorials/week12-generative_tutorial
     - file: assignments/Assignment10         # stub
 
-  - caption: "Week 12 — Advanced Topics: Foundation Models for Climate"
+  - caption: "Week 13 — Advanced Topics: Foundation Models for Climate"
     chapters:
     - file: lectures_ML/FoundationModels/foundationmodels   # stub
     - file: lectures_ML/Emulation/emulation
-    - file: tutorials/week12-emulation_tutorial
+    - file: tutorials/week13-emulation_tutorial
     - file: lectures_ML/Applications/forecasting            # stub
     - file: lectures_ML/AdvancedTopics/physicsai
-    # No assignment -- syllabus lists none for weeks 12-14.
-
-  - caption: "Week 13 — Ethics and Policy of ML and AI"
-    chapters:
-    - file: lectures_ML/Ethics/ethics                       # stub
+    # No assignment -- syllabus lists none for weeks 13-14.
 
   # Week 14, December 14 -- last class, no reading.

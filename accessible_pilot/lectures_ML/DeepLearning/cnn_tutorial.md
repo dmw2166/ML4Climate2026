@@ -47,7 +47,7 @@ cwd = os.getcwd()
 
 # ClimateBench is on Zenodo (10.5281/zenodo.7064308) under CC-BY-4.0. The training and
 # test archives together are about 900 MB, so this takes a few minutes the first time.
-# The files are cached in climatebench_data/ and reused afterwards. The Week 12
+# The files are cached in climatebench_data/ and reused afterwards. The Week 13
 # emulation tutorial reads from the same folder.
 DATA = "climatebench_data"
 ZENODO = "https://zenodo.org/api/records/7064308/files"

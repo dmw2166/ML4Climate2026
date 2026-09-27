@@ -38,3 +38,6 @@ climatebench_data/
 
 # Line-by-line annotated copies of the tutorials, generated locally for teaching. Not tracked.
 tutorials_annotated/
+
+# Textbook PDF kept locally, never committed
+Hands-On Machine Learning*.pdf
