@@ -65,7 +65,7 @@ fit several models predicting the 10th, 50th and 90th percentiles of the target,
 asymmetric loss. The spread between them is a predictive interval, and it can vary with the
 inputs, wide where the process is noisy, narrow where it is not.
 
-This is a natural fit for the streamflow problem in Assignment 8. There, a network trained on
+This is a natural fit for the streamflow problem in Assignment 9. There, a network trained on
 squared error systematically **under-predicts floods**, because the loss averages over thousands
 of ordinary days and the few extreme ones barely register. A quantile model asked for the 95th
 percentile answers a different and more useful question for a flood warning: not "what will the
@@ -111,10 +111,10 @@ For classifiers the analogue is a **reliability diagram**: bin the predicted pro
 plot the observed frequency in each bin against the predicted probability. A calibrated model
 lies on the diagonal.
 
-You have already met this distinction. In Assignment 3, logistic regression and an SVM both
-classify major hurricanes about equally well, but only logistic regression emits a *calibrated
-probability*; it is fitted by maximizing the likelihood of the observed labels, which is a
-proper scoring rule. The SVM's decision function ranks storms correctly but its units are
+You have already met this distinction. In Assignment 4 logistic regression classifies major
+hurricanes, and in Assignment 5 an SVM classifies unhealthy air days about as well, but only
+logistic regression emits a *calibrated probability*; it is fitted by maximizing the likelihood of the observed labels, which is a
+proper scoring rule. The SVM's decision function ranks cases correctly but its units are
 arbitrary. For a forecaster deciding whether to order an evacuation, where the costs are wildly
 asymmetric and the action threshold is nowhere near 50%, that difference is the whole ballgame.
 
@@ -163,7 +163,7 @@ State which sources your interval includes and which it does not.
 **Burying the uncertainty.** An interval reported in a supplementary table while the abstract
 quotes a point estimate has been technically disclosed and practically hidden.
 
-The standard to hold yourself to is the one Assignment 5 asks for explicitly: give the number you
+The standard to hold yourself to is the one Assignment 6 asks for explicitly: give the number you
 would stand behind, say which validation scheme produced it, and state one thing you could not
 determine from the data. That last clause is the one people skip, and it is often the most
 useful sentence in the report.

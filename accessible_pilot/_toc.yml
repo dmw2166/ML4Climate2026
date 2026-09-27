@@ -24,7 +24,7 @@ parts:
     chapters:
       - file: lectures_ML/SupervisedML/treesforests
       - file: lectures_ML/SupervisedML/randomforests
-      - file: assignments/Assignment4
+      - file: assignments/Assignment5
   - caption: "Week 7 — Unsupervised Learning: Dimensionality Reduction"
     chapters:
       - file: lectures_ML/UnsupervisedML/unsupervisedML
@@ -33,12 +33,12 @@ parts:
   - caption: "Week 9 — Unsupervised Learning: Clustering"
     chapters:
       - file: lectures_ML/UnsupervisedML/clustering
-      - file: assignments/Assignment7
+      - file: assignments/Assignment8
   - caption: "Week 10 — Deep Learning: Artificial Neural Networks"
     chapters:
       - file: lectures_ML/DeepLearning/ann
       - file: lectures_ML/DeepLearning/ann_tutorial
-      - file: assignments/Assignment8
+      - file: assignments/Assignment9
   - caption: "Week 11 — Deep Learning: Convolutional and Recurrent Networks"
     chapters:
       - file: lectures_ML/DeepLearning/cnn

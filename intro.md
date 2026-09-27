@@ -33,7 +33,7 @@ Your grade in this course is based on:
 - **10%**: attendance and participation
 
 
-**Coding assignments.** There are **ten** coding assignments, assigned each week, following the material covered in class. Each is due by **Monday at midnight of the following week** (e.g. the assignment given at the start of week 2 is due Monday of week 3). 
+**Coding assignments.** There are **eleven** coding assignments, assigned each week, following the material covered in class. Each is due by **Monday at midnight of the following week** (e.g. the assignment given at the start of week 2 is due Monday of week 3). 
 
 
 ## Final project

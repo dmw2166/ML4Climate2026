@@ -82,7 +82,7 @@ Three approaches, in rough order of sophistication:
   [Week 7](../../tutorials/week07-PCA.ipynb)), emulate the handful of principal component
   coefficients, then project back. This exploits the fact that climate fields have far fewer
   degrees of freedom than grid cells, the same insight that made EOF analysis useful in
-  Assignment 6.
+  Assignment 7.
 - **Predict the field directly** with a convolutional decoder, letting the network learn the
   spatial structure. This is what the stronger ClimateBench entries do.
 
