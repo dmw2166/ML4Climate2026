@@ -112,10 +112,9 @@ plot the observed frequency in each bin against the predicted probability. A cal
 lies on the diagonal.
 
 You have already met this distinction. In Assignment 4 logistic regression classifies major
-hurricanes, and in Assignment 5 an SVM classifies unhealthy air days about as well, but only
-logistic regression emits a *calibrated probability*; it is fitted by maximizing the likelihood of the observed labels, which is a
-proper scoring rule. The SVM's decision function ranks cases correctly but its units are
-arbitrary. For a forecaster deciding whether to order an evacuation, where the costs are wildly
+hurricanes and emits a *calibrated probability*; it is fitted by maximizing the likelihood of the observed labels, which is a
+proper scoring rule. A support vector machine, by contrast, ranks cases correctly but its decision function has
+arbitrary units. For a forecaster deciding whether to order an evacuation, where the costs are wildly
 asymmetric and the action threshold is nowhere near 50%, that difference is the whole ballgame.
 
 Neural networks are, as a rule, **overconfident**: modern architectures trained to high accuracy
