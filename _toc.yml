@@ -52,6 +52,7 @@ parts:
     chapters:
     - file: lectures_ML/SupervisedML/treesforests
     - file: tutorials/week05-randomforests
+    - file: tutorials/week05-demand-forest
     - file: assignments/Assignment5
 
   - caption: "Week 6 — Model Evaluation and Validation"
