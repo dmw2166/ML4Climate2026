@@ -40,8 +40,6 @@ execute:
     - "**/*datapreparation.ipynb"
     - "**/*randomforests.ipynb"
     - "**/*PCA.ipynb"
-    - "**/*validation-tutorial.ipynb"   # pulls 36 years of three stations from the NOAA API, which can take
-                                       # longer than the timeout; ships saved outputs
     - "**/*ann_tutorial.ipynb"   # needs tensorflow + downloads the PPE data from Zenodo; ships saved outputs
     - "**/*cnn_tutorial.ipynb"   # needs tensorflow + reads ClimateBench data from a gs:// bucket; ships saved outputs
     - "**/*rnn_tutorial.ipynb"   # needs tensorflow + gcsfs (requester-pays CAMELS bucket); ships saved outputs
