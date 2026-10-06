@@ -16,6 +16,9 @@ exclude_patterns:
   # from Week 5 on every tutorials/ notebook is a site page listed in _toc.yml.
   - tutorials/week01-python-tutorial.ipynb
   - tutorials/week04-supervised-tutorial.ipynb
+  # Untracked in-class scratch notebooks; never part of the site.
+  - tutorials/Sep28.ipynb
+  - tutorials/Oct5.ipynb
   # Local, gitignored annotated copies of the tutorials; never part of the site.
   - tutorials_annotated
   # Zoom class transcripts are kept local (gitignored); don't build them as pages.
