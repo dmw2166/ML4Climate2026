@@ -41,3 +41,7 @@ tutorials_annotated/
 
 # Textbook PDF kept locally, never committed
 Hands-On Machine Learning*.pdf
+
+# Local copies of every tutorial's input data, downloaded as a backup for when a
+# source is slow or down in class. See tutorials/data/README.md. Never committed.
+tutorials/data/
