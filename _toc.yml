@@ -9,8 +9,8 @@ root: intro
 # ---------------------------------------------------------------------------
 # Parts mirror the course schedule in the syllabus (CLMT5120, Fall 2026), one
 # part per teaching week. Data preprocessing spans Weeks 2 and 3 and is one
-# part. Week 8 is fall break and Week 14 is the last class with no new
-# material, so neither has a part here. The schedule was pushed back one week
+# part. Week 8 is fall break and has no part. Week 14 is the last class and
+# carries only its live-coding notebook. The schedule was pushed back one week
 # in late September 2026 and the ethics and policy week was dropped to make room.
 #
 # Assignments follow the syllabus convention: the assignment listed under a
@@ -60,6 +60,7 @@ parts:
     - file: lectures_ML/ModelEvaluation/modelevaluation
     - file: lectures_ML/ModelEvaluation/validation
     - file: lectures_ML/Uncertainty/uncertainty     # folded in from off-schedule
+    - file: tutorials/week06-validation-tutorial
     - file: assignments/Assignment6                  # stub
 
   - caption: "Week 7 — Unsupervised Learning: Dimensionality Reduction"
@@ -74,6 +75,7 @@ parts:
   - caption: "Week 9 — Unsupervised Learning: Clustering"
     chapters:
     - file: lectures_ML/UnsupervisedML/clustering
+    - file: tutorials/week09-clustering-tutorial
     - file: assignments/Assignment8
 
   - caption: "Week 10 — Deep Learning: Artificial Neural Networks"
@@ -111,4 +113,6 @@ parts:
     - file: lectures_ML/AdvancedTopics/physicsai
     # No assignment -- syllabus lists none for weeks 13-14.
 
-  # Week 14, December 14 -- last class, no reading.
+  - caption: "Week 14 — Last Class"
+    chapters:
+    - file: tutorials/week14-carbon-cost-tutorial

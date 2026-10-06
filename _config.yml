@@ -12,13 +12,10 @@ exclude_patterns:
   - accessible_pilot
   # Solution keys — local only, never published. Also gitignored.
   - solutions
-  # In-class live-coding notebooks (Weeks 1, 4, 6, 9, 14) are tracked but not published;
-  # the other tutorials/ notebooks are site pages listed in _toc.yml.
+  # The Week 1 and Week 4 live-coding notebooks are tracked but not published;
+  # from Week 5 on every tutorials/ notebook is a site page listed in _toc.yml.
   - tutorials/week01-python-tutorial.ipynb
   - tutorials/week04-supervised-tutorial.ipynb
-  - tutorials/week06-validation-tutorial.ipynb
-  - tutorials/week09-clustering-tutorial.ipynb
-  - tutorials/week14-carbon-cost-tutorial.ipynb
   # Local, gitignored annotated copies of the tutorials; never part of the site.
   - tutorials_annotated
   # Zoom class transcripts are kept local (gitignored); don't build them as pages.
@@ -40,6 +37,8 @@ execute:
     - "**/*datapreparation.ipynb"
     - "**/*randomforests.ipynb"
     - "**/*PCA.ipynb"
+    - "**/*validation-tutorial.ipynb"   # pulls 36 years of three stations from the NOAA API, which can take
+                                       # longer than the timeout; ships saved outputs
     - "**/*ann_tutorial.ipynb"   # needs tensorflow + downloads the PPE data from Zenodo; ships saved outputs
     - "**/*cnn_tutorial.ipynb"   # needs tensorflow + reads ClimateBench data from a gs:// bucket; ships saved outputs
     - "**/*rnn_tutorial.ipynb"   # needs tensorflow + gcsfs (requester-pays CAMELS bucket); ships saved outputs
