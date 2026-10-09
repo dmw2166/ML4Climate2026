@@ -5,6 +5,11 @@ Answering it correctly turns out to be harder for climate and environmental data
 of the datasets used to teach machine learning, and getting it wrong is one of the most common
 sources of published results that do not hold up.
 
+This page is the overview. The [next page](validation.ipynb) works through each idea in
+code: baselines, why one hold-out score is not enough, k-fold cross-validation, folds that
+respect space and time, and hyperparameter tuning. The tutorial then runs the whole recipe
+on river flow data.
+
 ## Why the standard recipe fails here
 
 The usual approach is to hold out a random subset of the data, train on the rest, and report
@@ -46,13 +51,29 @@ actually be used.**
 - Applying a model to a region with no training data? Hold out entire regions.
 - Forecasting forward in time? Test only on periods after the training window.
 - Deploying to a new station or instrument? Hold out whole stations.
-- Projecting a future climate state? Ask whether your model can extrapolate at all.
 
-That last case is specific to this field and deserves emphasis. Much of climate science asks
-models to make predictions about conditions that have never been observed, warmer mean states,
-higher greenhouse gas concentrations, more extreme events than are in the historical record. Some
-model families handle this reasonably; others fail completely and without warning. Knowing which
-you are working with matters more than squeezing out another point of validation skill.
+A fourth case, projecting into a climate state that has never been observed, is not a
+validation problem at all: no split can test it, and Week 5 showed that some model families
+cannot do it. Know which family you are using before you ask.
+
+## One split is not enough
+
+Even when a random split is the right split, the score it gives depends on which samples
+landed in the test set. **K-fold cross-validation** cuts the data into $k$ folds, holds out
+each in turn, and reports the mean and spread of the $k$ scores. It uses every sample for
+testing once and most of the data for training every time. On correlated data the folds are
+built with `GroupKFold` or `TimeSeriesSplit` instead of a shuffle, but the mechanics are the
+same. The next page shows the loop, the scikit-learn shortcuts, and the choices of $k$.
+
+## Hyperparameters are chosen on data the score never sees
+
+Settings such as a tree's depth or a neighbor count are not learned by `fit`. They are chosen
+by trying values and keeping the best, and whatever data make that choice can no longer give
+an unbiased score. Either hold back a validation set for the choice and a test set for the
+score, or run the search by cross-validation on the training data with `GridSearchCV` and
+test once at the end. The splitter inside the search has to be the same one the validation
+uses; a search with shuffled folds on a time series picks the model that is best at copying
+its neighbors.
 
 ## Leakage
 
@@ -61,7 +82,7 @@ model. Spatial and temporal correlation are two routes, but there are others tha
 introduce by accident:
 
 - Standardizing or normalizing features using statistics computed over the whole dataset
-- Selecting features, or tuning hyperparameters, using the full dataset before splitting
+- Selecting features, or tuning hyperparameters, on data that includes the test set
 - Imputing missing values using information that spans the split
 
 The defense is to treat every preprocessing step as part of the model. Scikit-learn's `Pipeline`
