@@ -33,7 +33,7 @@ execute:
   # Ship saved outputs instead of re-running these in CI:
   #  - datapreparation: kagglehub download needs credentials CI lacks
   #  - randomforests: needs the 139 MB Zenodo CSV, which is too big to commit
-  #  - PCA: fetches MNIST from OpenML and streams NOAA SST over OPeNDAP (needs
+  #  - PCA: streams NOAA ERSST over OPeNDAP (needs
   #    xarray + a live NOAA THREDDS connection); ships its saved outputs instead
   #  - assignments/*: student templates with empty answer cells (would NameError)
   exclude_patterns:
