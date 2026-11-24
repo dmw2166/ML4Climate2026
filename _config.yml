@@ -16,6 +16,8 @@ exclude_patterns:
   # from Week 5 on every tutorials/ notebook is a site page listed in _toc.yml.
   - tutorials/week01-python-tutorial.ipynb
   - tutorials/week04-supervised-tutorial.ipynb
+  # Assignment 11 was dropped in November 2026; the notebook stays in the repo but is not published.
+  - assignments/Assignment11.ipynb
   # Untracked in-class scratch notebooks; never part of the site.
   - tutorials/Sep28.ipynb
   - tutorials/Oct5.ipynb
@@ -42,7 +44,7 @@ execute:
     - "**/*PCA.ipynb"
     - "**/*ann_tutorial.ipynb"   # needs tensorflow + downloads the PPE data from Zenodo; ships saved outputs
     - "**/*cnn_tutorial.ipynb"   # needs tensorflow + reads ClimateBench data from a gs:// bucket; ships saved outputs
-    - "**/*rnn_tutorial.ipynb"   # needs tensorflow + gcsfs (requester-pays CAMELS bucket); ships saved outputs
+    - "**/*rnn_tutorial.ipynb"   # needs tensorflow; ships saved outputs
     - "**/*week06-validation-tutorial.ipynb"   # reads the ozone CSV from the class server (/data9); ships saved outputs
     - "**/*week09-clustering-tutorial.ipynb"   # reads the methane sources CSV from the class server (/data9); ships saved outputs
     - "**/physicsai.ipynb"      # needs tensorflow + trains 4 networks (~5 min); ships saved outputs
